@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Login extends AppCompatActivity {
-
+    //버튼 할당
     Button btu_login;
     Button btu_register;
 
@@ -20,6 +20,7 @@ public class Login extends AppCompatActivity {
         btu_login = findViewById(R.id.btu_login);
         btu_register = findViewById(R.id.btu_register);
 
+        //클릭시 엑티비티 이동
         btu_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

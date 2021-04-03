@@ -27,8 +27,11 @@ public class MainScreen extends AppCompatActivity {
 
         member_photo = (ImageView) findViewById(R.id.member_photo);
 
+        //사진을 불러오는 명령어
+        //사진칸 id.setImageResource(R.drawable.사진);
         member_photo.setImageResource(R.drawable.sample);
 
+        //커뮤니티 버튼
         btu_community.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +39,8 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //챗봇 버튼
         btu_chatbot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +48,8 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //셋팅 버튼
         btu_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

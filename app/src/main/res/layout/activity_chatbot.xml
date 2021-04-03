@@ -6,11 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Chatbot">
 
-    <TextView
-        android:id="@+id/textView4"
+    <Button
+        android:id="@+id/btu_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ChatbotView"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="251dp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="홈"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btu_community"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btu_setting"
+        app:layout_constraintTop_toTopOf="@+id/btu_chatbot"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btu_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:text="내 어항"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="643dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btu_community"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="커뮤니티"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="643dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

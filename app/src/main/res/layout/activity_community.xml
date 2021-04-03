@@ -6,11 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".Community">
 
-    <TextView
-        android:id="@+id/textView5"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="424dp"
+        android:layout_height="649dp"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="3dp" />
+
+    <Button
+        android:id="@+id/btu_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CommunityView"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="291dp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="홈"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btu_chatbot"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toEndOf="@+id/btu_setting"
+        app:layout_constraintTop_toTopOf="@+id/btu_chatbot"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btu_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="내 어항"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="652dp" />
+
+    <Button
+        android:id="@+id/btu_chatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="도담이"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="652dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

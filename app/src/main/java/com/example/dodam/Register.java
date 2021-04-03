@@ -17,7 +17,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         btu_register = findViewById(R.id.btu_register);
-
+        //회원가입 버튼
         btu_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
