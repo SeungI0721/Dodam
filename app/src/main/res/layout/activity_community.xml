@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Community">
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="424dp"
-        android:layout_height="649dp"
-        tools:layout_editor_absoluteX="-7dp"
-        tools:layout_editor_absoluteY="3dp" />
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbars="vertical" />
 
     <Button
-        android:id="@+id/btu_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        android:text="홈"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btu_chatbot"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toEndOf="@+id/btu_setting"
-        app:layout_constraintTop_toTopOf="@+id/btu_chatbot"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btu_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="내 어항"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="652dp" />
-
-    <Button
-        android:id="@+id/btu_chatbot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:text="도담이"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="652dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:text="글작성" />
+</LinearLayout>

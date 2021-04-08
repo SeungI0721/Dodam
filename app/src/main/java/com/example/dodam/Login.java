@@ -17,8 +17,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btu_login = findViewById(R.id.btu_login);
-        btu_register = findViewById(R.id.btu_register);
+        btu_login = findViewById(R.id.btn_login);
+        btu_register = findViewById(R.id.btn_register);
 
         //클릭시 엑티비티 이동
         btu_login.setOnClickListener(new View.OnClickListener() {
