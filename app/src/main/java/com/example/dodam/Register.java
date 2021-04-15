@@ -49,7 +49,7 @@ public class Register extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if (success) { //회원가입 성공
-                                Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), String.format("%s님 가입을 환영합니다.", userName), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Register.this, MainActivity.class);
                                 startActivity(intent);
                             } else { //회원가입 실패
