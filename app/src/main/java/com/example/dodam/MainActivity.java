@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         //xml에서 버튼에게 동일 '모션 id'를 준 것이 아닌 '자체 id'를 부여 했을 때, 앞으로의 코딩에서
         // 해당 id를 입력하면 동일한 id를 가지고 있는 버튼을 찾아 실행하게 설정하는 코드
         btn_login = findViewById(R.id.btn_login);
-        btn_guest = findViewById(R.id.btn_guest);
         btn_register = findViewById(R.id.btn_register);
 
         et_id = findViewById(R.id.et_id);
@@ -84,15 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Register.class);
-                startActivity(intent);
-            }
-        });
-
-        //로그인 없이 계속
-        btn_guest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainScreen.class);
                 startActivity(intent);
             }
         });

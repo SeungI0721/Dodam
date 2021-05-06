@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("localhost", "rays0507", "비밀번호", "rays0507");
+    $con = mysqli_connect("localhost", "사용자 아이디", "사용자 비밀번호", "사용자 아이디");
 
     $userId = $_POST["userID"];
     $userPassword = $_POST["userPassword"];
