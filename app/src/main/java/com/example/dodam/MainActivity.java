@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else { //로그인 실패
-                            Toast.makeText(getApplicationContext(), "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "로그인에 실패했습니다. 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     } catch (JSONException e) {
