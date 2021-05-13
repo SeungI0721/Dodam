@@ -11,7 +11,7 @@
 
 
     mysqli_stmt_store_result($statement);
-    mysqli_stmt_bind_result($statement, $userID, $userPassword, $userName, $userAge);
+    mysqli_stmt_bind_result($statement, $userID, $userPassword, $userName, $userEmail);
 
     $response = array();
     $response["success"] = true;
@@ -21,7 +21,7 @@
         $response["userID"] = $userID;
         $response["userPassword"] = $userPassword;
         $response["userName"] = $userName;
-        $response["userAge"] = $userAge;
+        $response["userEmail"] = $userEmail;
     }
 
     echo json_encode($response);

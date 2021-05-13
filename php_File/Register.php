@@ -5,10 +5,10 @@
     $userID = $_POST["userID"];
     $userPassword = $_POST["userPassword"];
     $userName = $_POST["userName"];
-    $userAge = $_POST["userAge"];
+    $userEmail = $_POST["userEmail"];
 
     $statement = mysqli_prepare($con, "INSERT INTO USER VALUES (?,?,?,?)");
-    mysqli_stmt_bind_param($statement, "sssi", $userID, $userPassword, $userName, $userAge);
+    mysqli_stmt_bind_param($statement, "ssss", $userID, $userPassword, $userName, $userEmail);
     mysqli_stmt_execute($statement);
 
 
