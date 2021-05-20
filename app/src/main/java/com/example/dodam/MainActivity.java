@@ -53,13 +53,18 @@ public class MainActivity extends AppCompatActivity {
                             String userID = jsonObject.getString("userID");
                             String userPassword = jsonObject.getString("userPassword");
                             String userName = jsonObject.getString( "userName" );
+                            String point = jsonObject.getString("point");
+                            String userEmail = jsonObject.getString("userEmail");
+                            String userPhoto = jsonObject.getString("userPhoto");
+
 
                             Toast.makeText(getApplicationContext(), String.format("%s님 환영합니다.", userName), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity.this, MainScreen.class);
 
-                            intent.putExtra("userID", userID);
-                            intent.putExtra("userPass", userPassword);
-                            intent.putExtra( "UserName", userName );
+                            intent.putExtra( "userName", userName );
+                            intent.putExtra("point", point);
+                            intent.putExtra("userPhoto", userPhoto);
+
                             startActivity(intent);
 
                         } else { //로그인 실패
