@@ -134,7 +134,7 @@ public class MainScreen extends AppCompatActivity {
         btu_chatbot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, Chatbot.class);
+                Intent intent = new Intent(MainScreen.this, Dodam_Cat.class);
                 startActivity(intent);
             }
         });

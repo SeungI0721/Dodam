@@ -14,7 +14,7 @@ public class UserTestRequest extends StringRequest {
     private Map<String, String> map;
 
     public UserTestRequest(String userID, Response.Listener<String> listener){
-        super(Request.Method.POST, URL, listener,null);
+        super(Method.POST, URL, listener,null);
 
         map = new HashMap<>();
         map.put("userID", userID);

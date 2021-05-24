@@ -6,11 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".Setting">
 
-    <TextView
-        android:id="@+id/textView6"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btu_bac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="307dp"
+            android:layout_marginBottom="16dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btu_sa"
+            android:layout_width="90dp"
+            android:layout_height="83dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="4dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/셋배경"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SettingView"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="169dp" />
+        app:srcCompat="@drawable/background0" />
+
+    <ImageView
+        android:id="@+id/셋패널"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_pannel" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_light_offset" />
+
+    <ImageView
+        android:id="@+id/돌아가"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/m_setting_button" />
+
+    <ImageView
+        android:id="@+id/저장"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_setbutton" />
+
+    <ImageView
+        android:id="@+id/히"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_temp_off" />
+
+    <ImageView
+        android:id="@+id/수위메"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_whoff1" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_light_onset" />
+
+    <ImageView
+        android:id="@+id/수위상"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_whoff2" />
+
+    <ImageView
+        android:id="@+id/수질메"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_wqoff1" />
+
+    <ImageView
+        android:id="@+id/수질상"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_wqoff2" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/s_setting_light_onset" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/tv_su"
+            android:layout_width="87dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="153dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="177dp"
+            android:ems="10"
+            android:hint="26"
+            android:gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:textColorHint="#3E3E3E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

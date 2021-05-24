@@ -17,11 +17,11 @@ public class RegisterRequest extends StringRequest {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
-        map.put("userID",userID);
-        map.put("point",point+"");
-        map.put("userEmail",userEmail);
-        map.put("userPassword",userPassword);
-        map.put("userName",userName);
+        map.put("userID", userID);
+        map.put("point", point+"");
+        map.put("userEmail", userEmail);
+        map.put("userPassword", userPassword);
+        map.put("userName", userName);
         map.put("userPhoto", userPhoto);
 
     }

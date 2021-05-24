@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Community extends AppCompatActivity {
+public class community_f extends AppCompatActivity {
 
-    private  Button btu_cback, btu_topo, btu_q, btu_f;
+    private Button btu_cback, btu_topo, btu_go, btu_q;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +18,24 @@ public class Community extends AppCompatActivity {
 
         //이동 버튼
         btu_cback = findViewById(R.id.btu_cback);
-        btu_f = findViewById(R.id.btu_f);
         btu_topo = findViewById(R.id.btu_topo);
+        btu_go = findViewById(R.id.btu_go);
         btu_q = findViewById(R.id.btu_q);
 
         //돌아가기
         btu_cback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Community.this, MainScreen.class);
+                Intent intent = new Intent(community_f.this, MainScreen.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        //공지사항
+        btu_go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(community_f.this, Community.class);
                 startActivity(intent);
                 finish();
             }
@@ -36,17 +45,7 @@ public class Community extends AppCompatActivity {
         btu_q.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Community.this, community_q.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        //자유게시판
-        btu_f.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Community.this, community_f.class);
+                Intent intent = new Intent(community_f.this, community_q.class);
                 startActivity(intent);
                 finish();
             }
@@ -56,8 +55,9 @@ public class Community extends AppCompatActivity {
         btu_topo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Community.this, Commu_po.class);
+                Intent intent = new Intent(community_f.this, Commu_po.class);
                 startActivity(intent);
+                finish();
             }
         });
 

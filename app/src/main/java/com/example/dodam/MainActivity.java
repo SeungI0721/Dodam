@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("userPhoto", userPhoto);
 
                             startActivity(intent);
+                            finish();
 
                         } else { //로그인 실패
                             Toast.makeText(getApplicationContext(), "로그인에 실패했습니다. 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
