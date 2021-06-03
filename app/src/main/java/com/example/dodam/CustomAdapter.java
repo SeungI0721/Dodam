@@ -35,12 +35,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        Glide.with(holder.itemView)
-                .load(arrayList.get(position).getUserPhoto())
-                .into(holder.userPhoto);
         holder.tv_name.setText(arrayList.get(position).getUserName());
         holder.tv_time.setText(arrayList.get(position).getTime());
         holder.tv_Title.setText(arrayList.get(position).getNoticeTitle());
+        holder.tv_Conten.setText(arrayList.get(position).getNoticeContent());
     }
 
     @Override
@@ -49,13 +47,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        ImageView userPhoto;
-        TextView tv_name, tv_time, tv_Title;
+        TextView tv_name, tv_time, tv_Title, tv_Conten;
 
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.userPhoto = itemView.findViewById(R.id.userPhoto);
+            this.tv_Conten = itemView.findViewById(R.id.tv_Conten);
             this.tv_name = itemView.findViewById(R.id.tv_name);
             this.tv_time = itemView.findViewById(R.id.tv_time);
             this.tv_Title = itemView.findViewById(R.id.tv_Title);

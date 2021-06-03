@@ -1,16 +1,12 @@
 package com.example.dodam;
 
 public class Post {
-    private  String userPhoto;
     private  String userName;
     private  String time;
     private  String noticeTitle;
+    private  String noticeContent;
 
     public Post(){}
-
-    public String getUserPhoto() {
-        return userPhoto;
-    }
 
     public String getUserName() {
         return userName;
@@ -24,10 +20,6 @@ public class Post {
         return noticeTitle;
     }
 
-    public void setUserPhoto(String userPhoto) {
-        this.userPhoto = userPhoto;
-    }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -39,4 +31,8 @@ public class Post {
     public void setNoticeTitle(String noticeTitle) {
         this.noticeTitle = noticeTitle;
     }
+
+    public void setNoticeContent(String noticeContent) { this.noticeContent = noticeContent; }
+
+    public String getNoticeContent() { return noticeContent; }
 }

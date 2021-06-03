@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class community_f extends AppCompatActivity {
@@ -78,5 +82,40 @@ public class community_f extends AppCompatActivity {
             }
         });
 
+
+           /*String TAG_JSON="webnautes";
+            String TAG_ID = "id";
+            String TAG_NAME = "name";
+            String TAG_COUNTRY ="country";
+
+
+            try {
+                JSONObject mJsonString;
+                JSONObject jsonObject = new JSONObject(mJsonString);
+                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+                for(int i=0;i<jsonArray.length();i++){
+
+                    JSONObject item = jsonArray.getJSONObject(i);
+
+                    String id = item.getString(TAG_ID);
+                    String name = item.getString(TAG_NAME);
+                    String address = item.getString(TAG_COUNTRY);
+
+                    PersonalData personalData = new PersonalData();
+
+                    personalData.setMember_id(id);
+                    personalData.setMember_name(name);
+                    personalData.setMember_address(address);
+
+                    mArrayList.add(personalData);
+                    mAdapter.notifyDataSetChanged();
+                }
+
+
+
+            } catch (JSONException e) {
+
+            }*/
     }
 }
