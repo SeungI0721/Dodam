@@ -1,7 +1,12 @@
 package com.example.dodam;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Dialog;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,8 +27,15 @@ public class MainScreen extends AppCompatActivity {
     private TextView tv_name, tv_point;
     private ImageView member_photo, Light_bt, tem_im, heter_bt, water_im;
 
+    NotificationCompat.Builder builder;
+    private static String CHANNEL_ID = "channel1";
+
     boolean lig = true;
     boolean het = true;
+    int tem = 30;
+    int water = 40;
+    String light = "0";
+    String heter = "0";
 
 
     @Override
@@ -64,12 +76,14 @@ public class MainScreen extends AppCompatActivity {
         btu_light.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (lig == true){
-                    Light_bt.setImageResource(R.drawable.m_light_off);
+                if (lig == true) {
+                    Light_bt.setImageResource(R.drawable.bt_light_off);
                     lig = false;
+                    light = "1";
                 } else {
-                    Light_bt.setImageResource(R.drawable.m_light_on);
+                    Light_bt.setImageResource(R.drawable.bt_light_on);
                     lig = true;
+                    light = "0";
                 }
             }
         });
@@ -79,14 +93,35 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (het == true) {
-                    heter_bt.setImageResource(R.drawable.m_heater_off);
+                    heter_bt.setImageResource(R.drawable.bt_heater_off);
                     het = false;
+                    heter = "1";
                 } else {
-                    heter_bt.setImageResource(R.drawable.m_heater_on);
+                    heter_bt.setImageResource(R.drawable.bt_heater_on);
                     het = true;
+                    heter = "0";
                 }
             }
         });
+
+            //수온 조절
+            if (tem < 20) {
+                tem_im.setImageResource(R.drawable.m_tem1);
+            } if (tem > 20 && tem <30) {
+                tem_im.setImageResource(R.drawable.m_tem2);
+            } else {
+                tem_im.setImageResource(R.drawable.m_tem3);
+            }
+
+
+            //수질
+            if (water < 20) {
+                water_im.setImageResource(R.drawable.m_water1);
+            } if (water >20 && water <30) {
+                water_im.setImageResource(R.drawable.m_water2);
+            } else {
+                water_im.setImageResource(R.drawable.m_water3);
+            }
 
         /*class ConnectThread extends Thread{//소켓통신을 위한 스레드
             public void run(){
@@ -119,33 +154,110 @@ public class MainScreen extends AppCompatActivity {
         }   */
 
 
+            //페이지 이동-------------------------------------------------------------------
+            //커뮤니티 버튼
+            btu_community.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainScreen.this, community_f.class);
+                    startActivity(intent);
+                }
+            });
 
-        //페이지 이동-------------------------------------------------------------------
-        //커뮤니티 버튼
-        btu_community.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, Community.class);
-                startActivity(intent);
-            }
-        });
+            //챗봇 버튼
+            btu_chatbot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainScreen.this, Dodam_Cat.class);
+                    startActivity(intent);
+                }
+            });
 
-        //챗봇 버튼
-        btu_chatbot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, Dodam_Cat.class);
-                startActivity(intent);
-            }
-        });
+            //셋팅 버튼
+            btu_setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainScreen.this, Setting.class);
+                    startActivity(intent);
+                }
+            });
 
-        //셋팅 버튼
-        btu_setting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainScreen.this, Setting.class);
-                startActivity(intent);
+            //셋팅으로 부터 정보 받아오기
+            Intent setIntent = getIntent();
+            boolean wl_m = intent.getExtras().getBoolean("wl_m");
+            boolean wl_t = intent.getExtras().getBoolean("wl_t");
+            boolean wq_m = intent.getExtras().getBoolean("wq_m");
+            boolean wq_t = intent.getExtras().getBoolean("wq_t");
+            boolean he = intent.getExtras().getBoolean("he");
+
+            //임시 변수
+        int Temperature = 25;
+        int Water = 25;
+
+        try {
+                if (wl_m == false) {
+                    if (Temperature <= 20) {
+                        builder = null;
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                                .setSmallIcon(R.drawable.p_rofile1)
+                                .setContentTitle("온도가 낮습니다!")
+                                .setContentText("히터를 작동해 온도를 올려주세요!")
+                                .setAutoCancel(true)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+                        notificationManager.notify(1, builder.build());
+                    }
+                }
+
+                if (wl_t == false) {
+                    if (Temperature <= 20) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainScreen.this);
+                        Dialog dialog = builder.setMessage("온도가 낮습니다!").setNegativeButton("확인", null).create();
+                        dialog.show();
+                        return;
+                    }
+                }
+
+                if (wq_m == false) {
+                    if (Water <= 20) {
+                        builder = null;
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                                .setSmallIcon(R.drawable.p_rofile1)
+                                .setContentTitle("수위가 낮습니다!")
+                                .setContentText("믈을 보충해 주세요!")
+                                .setAutoCancel(true)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+                        notificationManager.notify(1, builder.build());
+                    }
+                }
+
+                if (wq_t == false) {
+                    if (Water <= 20) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainScreen.this);
+                        Dialog dialog = builder.setMessage("수위가 낮습니다!").setNegativeButton("확인", null).create();
+                        dialog.show();
+                        return;
+                    }
+                }
+
+                if (he == false) {
+                   if (Temperature <= 20) {
+                       heter_bt.setImageResource(R.drawable.bt_heater_on);
+                       het = true;
+                       heter = "1";
+                   } if (Temperature >= 30) {
+                        heter_bt.setImageResource(R.drawable.bt_heater_off);
+                        het = false;
+                        heter = "0";
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+
     }
 }

@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".community_f"></activity>
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".community_f" />
         <activity android:name=".community_q" />
         <activity android:name=".Commu_po" />
         <activity android:name=".Dodam_Cat" />
         <activity android:name=".Register" />
-        <activity android:name=".Login" />
         <activity android:name=".Community" />
         <activity android:name=".Chatbot" />
         <activity android:name=".Setting" />

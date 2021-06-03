@@ -3,6 +3,7 @@ package com.example.dodam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
 
+        /*SharedPreferences pref = getSharedPreferences("my_user",MODE_PRIVATE);
+        String prefData = pref.getString();*/
+
         //설정 버튼이 클릭되면 어떤 것을 실행하라는 명령어
         //로그인
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra( "userName", userName );
                             intent.putExtra("point", point);
                             intent.putExtra("userPhoto", userPhoto);
+/*
+                            SharedPreferences pref = getSharedPreferences("my_user",MODE_PRIVATE);
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString(userID, userPassword);
+                            editor.commit();*/
 
                             startActivity(intent);
                             finish();

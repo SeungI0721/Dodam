@@ -1,15 +1,23 @@
 package com.example.dodam;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class community_f extends AppCompatActivity {
 
     private Button btu_cback, btu_topo, btu_go, btu_q;
+    private RecyclerView re;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<Post> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,15 @@ public class community_f extends AppCompatActivity {
         btu_topo = findViewById(R.id.btu_topo);
         btu_go = findViewById(R.id.btu_go);
         btu_q = findViewById(R.id.btu_q);
+
+        re = findViewById(R.id.re);
+        re.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        re.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+
+        adapter = new CustomAdapter(arrayList, this);
+        re.setAdapter(adapter);
 
         //돌아가기
         btu_cback.setOnClickListener(new View.OnClickListener() {
