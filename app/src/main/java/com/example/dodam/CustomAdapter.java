@@ -52,10 +52,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tv_Conten = itemView.findViewById(R.id.tv_Conten);
             this.tv_name = itemView.findViewById(R.id.tv_name);
             this.tv_time = itemView.findViewById(R.id.tv_time);
             this.tv_Title = itemView.findViewById(R.id.tv_Title);
+            this.tv_Conten = itemView.findViewById(R.id.tv_Conten);
+
         }
     }
 }

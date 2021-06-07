@@ -9,19 +9,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class community_f extends AppCompatActivity {
+public class community_f<FirebaseDatabase> extends AppCompatActivity {
 
     private Button btu_cback, btu_topo, btu_go, btu_q;
     private RecyclerView re;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Post> arrayList;
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,9 @@ public class community_f extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         re.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
+
+        /*database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Post"); // DB 테이블 연결*/
 
         adapter = new CustomAdapter(arrayList, this);
         re.setAdapter(adapter);

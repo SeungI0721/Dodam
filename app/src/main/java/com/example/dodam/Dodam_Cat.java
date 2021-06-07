@@ -13,10 +13,10 @@ import java.util.Random;
 public class Dodam_Cat extends AppCompatActivity {
 
     private Button but_bak, but_dodamt;
-    private TextView tv_dodam, tv_name, tv_point;
+    private TextView  tv_name, tv_point, tv_dodam;
 
-    /*Random random = new Random();
-    Random chat = random;*/
+    Random random = new Random();
+    Random chat = random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,12 @@ public class Dodam_Cat extends AppCompatActivity {
 
         tv_name.setText(userName);
         tv_point.setText(point);
+        /*ry {
+            Thread.sleep(3000);
 
-        /*try {
-            tv_dodam.setText((CharSequence) chat);
+            if (chat == "0") {
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

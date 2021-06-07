@@ -19,14 +19,30 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_login, btn_guest, btn_register;
+    private Button btn_login, btn_register;
     private EditText et_id, et_pass;
+
+    private boolean saveLoginData;
+    private String id;
+    private String pwd;
+
+    private SharedPreferences appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //이 java파일이 어느 xml파일과 연결되어 있는지 나타내는 코드
         setContentView(R.layout.activity_main);
+
+        appData = getSharedPreferences("appData", MODE_PRIVATE);
+        load();
+
+        // 이전에 로그인 정보를 저장시킨 기록이 있다면
+        if (saveLoginData) {
+            et_id.setText(id);
+            et_pass.setText(pwd);
+        }
+
 
         //xml에서 버튼에게 동일 '모션 id'를 준 것이 아닌 '자체 id'를 부여 했을 때, 앞으로의 코딩에서
         // 해당 id를 입력하면 동일한 id를 가지고 있는 버튼을 찾아 실행하게 설정하는 코드
@@ -68,13 +84,10 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra( "userName", userName );
                             intent.putExtra("point", point);
                             intent.putExtra("userPhoto", userPhoto);
-/*
-                            SharedPreferences pref = getSharedPreferences("my_user",MODE_PRIVATE);
-                            SharedPreferences.Editor editor = pref.edit();
-                            editor.putString(userID, userPassword);
-                            editor.commit();*/
 
                             startActivity(intent);
+                            save();
+
                             finish();
 
                         } else { //로그인 실패
@@ -101,5 +114,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // 설정값을 저장하는 함수
+    private void save() {
+        // SharedPreferences 객체만으론 저장 불가능 Editor 사용
+        SharedPreferences.Editor editor = appData.edit();
+
+        // 에디터객체.put타입( 저장시킬 이름, 저장시킬 값 )
+        // 저장시킬 이름이 이미 존재하면 덮어씌움
+        editor.putString("ID", et_id.getText().toString().trim());
+        editor.putString("PWD", et_pass.getText().toString().trim());
+
+        saveLoginData = true;
+    }
+
+    // 설정값을 불러오는 함수
+    private void load() {
+        // SharedPreferences 객체.get타입( 저장된 이름, 기본값 )
+        // 저장된 이름이 존재하지 않을 시 기본값
+        saveLoginData = appData.getBoolean("SAVE_LOGIN_DATA", false);
+        id = appData.getString("ID", "");
+        pwd = appData.getString("PWD", "");
     }
 }
