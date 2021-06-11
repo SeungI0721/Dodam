@@ -45,7 +45,7 @@ public class Chatbot extends AppCompatActivity {
                 WebView.setWebContentsDebuggingEnabled(true);
             }
 
-            webView.loadUrl("http://192.168.35.77:8080/");
+            webView.loadUrl("http://172.20.10.4:8080/");
 
             back.setOnClickListener(new View.OnClickListener() {
                 @Override

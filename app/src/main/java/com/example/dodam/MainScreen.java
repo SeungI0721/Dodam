@@ -40,12 +40,12 @@ public class MainScreen extends AppCompatActivity {
     NotificationCompat.Builder builder;
     private static String CHANNEL_ID = "channel1";
 
-    int Heter = 0;
+    boolean heter = false;
     int LED = 0;
 
-    private float Temperature = 25;
-    private float Water = 3;
-    private float Depth = 500;
+    private String Temperature = "25";
+    private String Water = "3";
+    private String Depth = "600";
 
 
     @SuppressLint("WrongViewCast")
@@ -111,10 +111,10 @@ public class MainScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (LED==0) {
                     LED = 1;
-                    Light_bt.setImageResource(R.drawable.bt_light_off);
+                    Light_bt.setImageResource(R.drawable.bt_light_on);
                 } else {
                     LED = 0;
-                    Light_bt.setImageResource(R.drawable.bt_light_on);
+                    Light_bt.setImageResource(R.drawable.bt_light_off);
                 }
             }
         });
@@ -123,12 +123,12 @@ public class MainScreen extends AppCompatActivity {
         btu_heter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Heter == 0) {
-                    Heter = 1;
-                    btu_heter.setBackgroundResource(R.drawable.bt_heater_off);
-                } else {
-                    Heter = 0;
+                if (!heter) {
+                    heter = true;
                     btu_heter.setBackgroundResource(R.drawable.bt_heater_on);
+                } else {
+                    heter = false;
+                    btu_heter.setBackgroundResource(R.drawable.bt_heater_off);
                 }
             }
         });
@@ -162,47 +162,49 @@ public class MainScreen extends AppCompatActivity {
         });
 
         //셋팅으로 부터 정보 받아오기
-        Intent setIntent = getIntent();
+        /*Intent setIntent = getIntent();
         boolean wl_m = setIntent.getExtras().getBoolean("wl_m");
         boolean wl_t = setIntent.getExtras().getBoolean("wl_t");
         boolean wq_m = setIntent.getExtras().getBoolean("wq_m");
         boolean wq_t = setIntent.getExtras().getBoolean("wq_t");
-        boolean he = setIntent.getExtras().getBoolean("he");
+        boolean he = setIntent.getExtras().getBoolean("he");*/
 
         //임시 변수
 
         try {
+            int Tem = Integer.parseInt(Temperature);
             //수온 조절
-            if (Temperature < 24) {
+            if (Tem < 25) {
                 tem_im.setImageResource(R.drawable.m_tem1);
             }
-            else if (Temperature < 26) {
+            else if (Tem < 27) {
                 tem_im.setImageResource(R.drawable.m_tem2);
             } else {
                 tem_im.setImageResource(R.drawable.m_tem3);
             }
 
-
+            int Wat = Integer.parseInt(Water);
             //수질
-            if (Water > 2.7) {
+            if (Wat > 2.7) {
                 water_im.setImageResource(R.drawable.m_water1);
             }
-            else if (Water > 2.5) {
+            else if (Wat > 2.5) {
                 water_im.setImageResource(R.drawable.m_water2);
             } else {
                 water_im.setImageResource(R.drawable.m_water3);
             }
 
+            int Dep = Integer.parseInt(Depth);
             //수위
-            if (Depth < 500) {
+            if (Dep < 500) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainScreen.this);
                 Dialog dialog = builder.setMessage("수위가 낮습니다!").setNegativeButton("물을 보충해 주세요!", null).create();
                 dialog.show();
                 return;
             }
 
-            if (!wl_m) {
-                if (Temperature <= 24) {
+            /*if (!wl_m) {*/
+                if (Tem <= 23) {
                     builder = null;
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                             .setSmallIcon(R.drawable.p_rofile1)
@@ -214,19 +216,19 @@ public class MainScreen extends AppCompatActivity {
 
                     notificationManager.notify(1, builder.build());
                 }
-            }
+            /*}*/
 
-            if (!wl_t) {
-                if (Temperature <= 24) {
+            /*if (!wl_t) {*/
+                if (Tem <= 23) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainScreen.this);
                     Dialog dialog = builder.setMessage("온도가 낮습니다!").setNegativeButton("히터를 켜주세요!", null).create();
                     dialog.show();
                     return;
                 }
-            }
+            /*}*/
 
-            if (!wq_m) {
-                if (Water <= 2.5) {
+            /*if (!wq_m) {*/
+                if (Wat <= 2.5) {
                     builder = null;
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                             .setSmallIcon(R.drawable.p_rofile1)
@@ -238,35 +240,36 @@ public class MainScreen extends AppCompatActivity {
 
                     notificationManager.notify(1, builder.build());
                 }
-            }
+            /*}*/
 
-            if (!wq_t) {
-                if (Water <= 2.5) {
+            /*if (!wq_t) {*/
+                if (Wat <= 2.5) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainScreen.this);
                     Dialog dialog = builder.setMessage("수질이 낮습니다!").setNegativeButton("환수해주세요!", null).create();
                     dialog.show();
                     return;
                 }
-            }
+            /*}*/
 
-            if (!he) {
-                if (Temperature <= 24) {
-                    Heter = 1;
+            /*if (!he) {*/
+                if (Tem <= 23) {
+                    heter = true;
+                    btu_heter.setBackgroundResource(R.drawable.bt_heater_on);
                 }
-                if (Temperature >= 26) {
-                    Heter = 0;
+                if (Tem >= 28) {
+                    heter = false;
+                    btu_heter.setBackgroundResource(R.drawable.bt_heater_off);
                 }
-            }
+            /*}*/
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*
-        ConnectThread th = new ConnectThread();  // 접속하면 바로 연결
+
+       /* ConnectThread th = new ConnectThread();  // 접속하면 바로 연결
         th.start();*/
     }
-
-    /*
+/*
     @Override
     protected void onStop() {  // 소켓 서버 종료 관련
         super.onStop();
@@ -275,7 +278,7 @@ public class MainScreen extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+
 
     class ConnectThread extends Thread {  //소켓통신을 위한 스레드
         public void run() {
@@ -290,7 +293,7 @@ public class MainScreen extends AppCompatActivity {
                     String read = in.readLine();
                     int idx = 0;
                     int idxx = 0;
-                    if(read.contains("*")){
+                    if (read.contains("*")) {
                         idx = read.indexOf("*");  // *를 기준으로 인덱스 찾음
                         String Temperature = read.substring(0, idx);  // 0번째부터 *까지의 문자열 추출
                         String tem = read.substring(idx + 1);  // * 다음부터 끝까지 추출
@@ -299,24 +302,34 @@ public class MainScreen extends AppCompatActivity {
                         String Depth = tem.substring(idxx + 1);
                         System.out.println("Data get - " + Temperature + " " + Water + " " + Depth);
                         mHandler.post(new msgTemp(Temperature));
+
                     }
                     //버튼이 눌리면 out 값을 내보내기 (기본 0)
                     PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-                    out.println(Heter);  // out 값을 아두이노 스케치에 출력하기
-                    System.out.println(Heter);
-                    out.println(Heter);
-                    Log.d("=============", read);
+                    if (heter) {
+                        out.println(1);
+                    } else {
+                        out.println(0);
+                    }
+                    System.out.println(">>"+heter);
+
+                        Log.d("=============", read);
+                    }
+                } catch(Exception e){
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            }
+        }*/
+
+        class msgTemp implements Runnable {
+            private String msg;
+
+            public msgTemp(String str) {
+                this.msg = str;
+            }
+
+            public void run() {
+                tv_team.setText(msg);
             }
         }
-    }*/
-    /*
-    class msgTemp implements Runnable {
-        private String msg;
-
-        public msgTemp(String str) { this.msg = str; }
-        public void run() {tv_team.setText(msg);}
-    }*/
-}
+    }

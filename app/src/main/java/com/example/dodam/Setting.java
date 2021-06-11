@@ -24,11 +24,11 @@ public class Setting extends AppCompatActivity {
     private Button btu_wl_t;
     private TextView tv_suon;
 
-    boolean he;
-    boolean wq_m;
-    boolean wq_t;
-    boolean wl_m;
-    boolean wl_t;
+    boolean he = true;
+    boolean wq_m = true;
+    boolean wq_t = true;
+    boolean wl_m = true;
+    boolean wl_t = true;
 
     String Shared = "file";
 
@@ -55,15 +55,15 @@ public class Setting extends AppCompatActivity {
 
         //돌아가기
         btu_bac.setOnClickListener(v -> {
-            Intent setIntent = new Intent(Setting.this, MainScreen.class);
-            setIntent.putExtra("he",he);
-            setIntent.putExtra("wq_t", wq_t);
-            setIntent.putExtra("wq_m", wq_m);
-            setIntent.putExtra("wl_t", wl_t);
-            setIntent.putExtra("wl_m", wl_m);
-            setIntent.putExtra("suon", (Parcelable) tv_suon);
+            Intent reintent = new Intent(Setting.this, MainScreen.class);
+            /*intent.putExtra("he",he);
+            intent.putExtra("wq_t", wq_t);
+            intent.putExtra("wq_m", wq_m);
+            intent.putExtra("wl_t", wl_t);
+            intent.putExtra("wl_m", wl_m);
+            intent.putExtra("suon", (Parcelable) tv_suon);*/
 
-            startActivity(setIntent);
+            startActivity(reintent);
             finish();
         });
 

@@ -2,7 +2,6 @@ package com.example.dodam;
 
 public class Post {
     private  String userName;
-    private  String time;
     private  String noticeTitle;
     private  String noticeContent;
 
@@ -12,27 +11,35 @@ public class Post {
         return userName;
     }
 
-    public String getTime() {
-        return time;
+    public void setUserName(String userName) {
+
+        this.userName = userName;
     }
 
     public String getNoticeTitle() {
         return noticeTitle;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public void setNoticeTitle() {
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public void setNoticeTitle(String noticeTitle) {
         this.noticeTitle = noticeTitle;
     }
 
-    public void setNoticeContent(String noticeContent) { this.noticeContent = noticeContent; }
+    public String getNoticeContent() {
+        return noticeContent;
+    }
 
-    public String getNoticeContent() { return noticeContent; }
+    public void setNoticeContent(String noticeContent) {
+
+        this.noticeContent = noticeContent;
+    }
+
+    public  String toString() {
+        return "Post{" +
+                "noticeContent='" + noticeContent + '\'' +
+                ", noticeTitle='" + noticeTitle + '\'' +
+                ", userName=" + userName + '\'' +
+                '}';
+    }
+
 }

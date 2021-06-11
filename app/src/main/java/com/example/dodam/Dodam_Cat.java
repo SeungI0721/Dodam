@@ -15,8 +15,7 @@ public class Dodam_Cat extends AppCompatActivity {
     private Button but_bak, but_dodamt;
     private TextView  tv_name, tv_point, tv_dodam;
 
-    Random random = new Random();
-    Random chat = random;
+    int ran = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +29,40 @@ public class Dodam_Cat extends AppCompatActivity {
         tv_name = findViewById(R.id.tv_name);
         tv_point = findViewById(R.id.tv_point);
 
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
-        String point = intent.getStringExtra("point");
+            try {
+                ran = (int)(Math.random() * 10);
 
-        tv_name.setText(userName);
-        tv_point.setText(point);
-        /*ry {
-            Thread.sleep(3000);
+                if (ran == 0) {
+                    tv_dodam.setText("안녕하세요?");
+                } else if (ran == 1) {
+                    tv_dodam.setText("오늘 하루는 어땠어요?");
+                } else if (ran == 2) {
+                    tv_dodam.setText("오늘 하루도 파이팅!");
+                } else if (ran == 3) {
+                    tv_dodam.setText("오늘 만날 수 있어서 너무 기뻐요!");
+                } else if (ran == 4) {
+                    tv_dodam.setText("오늘 식사는 어땠나요?");
+                } else if (ran == 5) {
+                    tv_dodam.setText("매일이 행복했으면 좋겠어요!");
+                } else if (ran == 6) {
+                    tv_dodam.setText("저와 대화해 보세요!");
+                } else if (ran == 7) {
+                    tv_dodam.setText("오늘도 열심히 배우는 중이에요!");
+                } else if (ran == 8) {
+                    tv_dodam.setText("저는 어떤 종류의 물고기 같나요?");
+                } else if (ran == 9) {
+                    tv_dodam.setText("어떤 색을 좋아하세요?");
+                }
 
-            if (chat == "0") {
-
-            }
-
-        } catch (Exception e) {
+            } catch (Exception e) {
             e.printStackTrace();
-        }*/
+            }
 
         but_dodamt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dodam_Cat.this, Chatbot.class);
-                startActivity(intent);
+                Intent reintent = new Intent(Dodam_Cat.this, Chatbot.class);
+                startActivity(reintent);
                 finish();
             }
         });
@@ -59,8 +70,8 @@ public class Dodam_Cat extends AppCompatActivity {
         but_bak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dodam_Cat.this, MainScreen.class);
-                startActivity(intent);
+                Intent reintent = new Intent(Dodam_Cat.this, MainScreen.class);
+                startActivity(reintent);
                 finish();
             }
         });

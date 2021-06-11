@@ -26,37 +26,37 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/post_pannel" />
 
-        <Button
-            android:id="@+id/btu_f"
-            android:layout_width="117dp"
-            android:layout_height="99dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="18dp"
-            android:background="@drawable/bt_free01"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btu_f"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bt_free01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/공지"
-            android:layout_width="117dp"
-            android:layout_height="99dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bt_qna02" />
+    <ImageView
+        android:id="@+id/공지"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bt_qna02" />
 
-        <Button
-            android:id="@+id/btu_go"
-            android:layout_width="117dp"
-            android:layout_height="99dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/bt_notice01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btu_go"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/bt_notice01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btu_topo"
@@ -78,13 +78,13 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="383dp"
         android:layout_height="479dp"
-        android:layout_marginTop="123dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/re"
+            android:id="@+id/recycler"
             android:layout_width="387dp"
             android:layout_height="482dp"
             app:layout_constraintEnd_toEndOf="parent"

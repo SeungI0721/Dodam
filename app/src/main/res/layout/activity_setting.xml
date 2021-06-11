@@ -46,8 +46,8 @@
         android:id="@+id/tv_suon"
         android:layout_width="87dp"
         android:layout_height="36dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/tv_set"
         android:ems="10"
         android:gravity="center"
@@ -65,7 +65,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="230dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/bt_off"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,48 +77,48 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/bt_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btu_heater" />
 
     <Button
         android:id="@+id/btu_wq_t"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="70dp"
         android:background="@drawable/bt_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btu_wq_m" />
 
     <Button
         android:id="@+id/btu_wl_m"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/bt_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btu_wq_t" />
 
     <Button
         android:id="@+id/btu_wl_t"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/bt_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btu_wl_m" />
 
     <EditText
         android:id="@+id/li_on"
@@ -126,11 +126,11 @@
         android:layout_height="45dp"
         android:layout_marginStart="200dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/tv_set"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/li_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -140,7 +140,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="200dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="85dp"
         android:background="@drawable/tv_set"
         android:ems="10"
         android:inputType="textPersonName"

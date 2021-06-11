@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +26,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Commu_po extends AppCompatActivity {
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = database.getReference();
 
     private Button btu_back, btu_pos;
     private TextView tv_main, tv_text;
@@ -38,13 +43,6 @@ public class Commu_po extends AppCompatActivity {
 
         tv_main = findViewById(R.id.tv_main);
         tv_text = findViewById(R.id.tv_text);
-
-        //날짜 및 시간
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.KOREA);
-
-        Date date = new Date();
-        String time = simpleDateFormat.format(date);
 
         //돌아가기
         btu_back.setOnClickListener(new View.OnClickListener() {
@@ -61,48 +59,20 @@ public class Commu_po extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String noticeTitle = tv_main.getText().toString();
-                String noticeContent = tv_text.getText().toString();
-                String time = date.toString();
-
                 Intent intent = getIntent();
                 String userName = intent.getStringExtra("userName");
 
-                if (noticeTitle.equals("") || noticeContent.equals("")) {
+
+
+                if (tv_main.equals("") || tv_text.equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Commu_po.this);
                     Dialog dialog = builder.setMessage("제목과 내용을 모두 입력해주세요.").setNegativeButton("확인", null).create();
                     dialog.show();
                     return;
                 }
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-
-                            if (success) { //글작성 성공
-                                Toast.makeText(getApplicationContext(), "작성되었습니다.", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Commu_po.this, community_f.class);
-                                startActivity(intent);
-                                finish();
-                            } else { //글작성 실패
-                                Toast.makeText(getApplicationContext(), "작성에 실패하였습니다.", Toast.LENGTH_LONG).show();
-                                return;
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                };
-                //서버로 Volley를 이용해 요청함.
-
-                PostingRequest postingRequest = new PostingRequest(noticeTitle, noticeContent, userName, time, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(Commu_po.this);
-                queue.add(postingRequest);
             }
         });
     }
+
 }

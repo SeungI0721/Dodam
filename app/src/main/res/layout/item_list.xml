@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="387dp"
-        android:layout_height="195dp"
+        android:layout_width="408dp"
+        android:layout_height="190dp"
         android:background="@drawable/post_block"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="16dp">
+        tools:layout_editor_absoluteX="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,43 +19,35 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_Title"
-                android:layout_width="278dp"
-                android:layout_height="46dp"
-                android:layout_margin="5dp"
-                android:text="제목"
-                android:textSize="18sp"
-                android:gravity="fill_horizontal"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="83dp"
+                android:id="@+id/tv_title"
+                android:layout_width="273dp"
                 android:layout_height="57dp"
                 android:layout_margin="5dp"
+                android:gravity="fill_horizontal"
+                android:text="제목"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_userName"
+                android:layout_width="108dp"
+                android:layout_height="47dp"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
                 android:text="닉네임"
                 android:textColor="@color/black"
-                android:gravity="center_horizontal"
                 android:textSize="16sp" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_Conten"
-            android:layout_width="374dp"
-            android:layout_height="93dp"
+            android:id="@+id/tv_content"
+            android:layout_width="394dp"
+            android:layout_height="121dp"
             android:layout_margin="5dp"
             android:text="게시글 내용"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="371dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="right"
-            android:text="yyyy-MM-dd HH:mm"
-            android:textColor="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

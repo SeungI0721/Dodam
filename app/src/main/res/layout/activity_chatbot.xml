@@ -20,25 +20,27 @@
         android:id="@+id/back"
         android:layout_width="134dp"
         android:layout_height="119dp"
+        android:layout_marginTop="650dp"
         android:background="@drawable/bt_return"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/to_dodam"
         android:layout_width="134dp"
         android:layout_height="119dp"
+        android:layout_marginTop="650dp"
         android:background="@drawable/bt_to_dodam02"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
         android:id="@+id/webvw"
         android:layout_width="408dp"
-        android:layout_height="678dp"
+        android:layout_height="650dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
     </WebView>
 
