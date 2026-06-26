@@ -1,17 +1,19 @@
+// 수조 자동화 설정과 알림 설정을 저장하는 Activity 파일이다.
 package com.example.dodam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.dodam.data.aquarium.AquariumRepository;
+import com.example.dodam.data.local.SettingsRepository;
+import com.example.dodam.domain.model.AlertSettings;
+import com.example.dodam.domain.model.AutomationSettings;
+import com.example.dodam.domain.usecase.AquariumInputValidator;
 
 public class Setting extends AppCompatActivity {
 
@@ -22,21 +24,25 @@ public class Setting extends AppCompatActivity {
     private Button btu_wq_t;
     private Button btu_wl_m;
     private Button btu_wl_t;
-    private TextView tv_suon;
+    private EditText tv_suon;
+    private EditText li_on;
+    private EditText li_off;
 
-    boolean he = true;
-    boolean wq_m = true;
-    boolean wq_t = true;
-    boolean wl_m = true;
-    boolean wl_t = true;
-
-    String Shared = "file";
+    private boolean heaterAutoMode;
+    private boolean turbidityDashboardAlert;
+    private boolean turbidityNotificationAlert;
+    private boolean waterLevelDashboardAlert;
+    private boolean waterLevelNotificationAlert;
+    private SettingsRepository settingsRepository;
+    private final AquariumInputValidator validator = new AquariumInputValidator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 설정 화면 XML과 Activity를 연결한다.
         setContentView(R.layout.activity_setting);
 
+        // 설정 화면의 입력칸과 버튼을 연결한다.
         btu_bac = findViewById(R.id.btu_bac);
         btu_sa = findViewById(R.id.btu_sa);
         btu_heater = findViewById(R.id.btu_heater);
@@ -45,124 +51,109 @@ public class Setting extends AppCompatActivity {
         btu_wl_m = findViewById(R.id.btu_wl_m);
         btu_wl_t = findViewById(R.id.btu_wl_t);
         tv_suon = findViewById(R.id.tv_suon);
+        li_on = findViewById(R.id.li_on);
+        li_off = findViewById(R.id.li_off);
 
-        /*li_on = findViewById(R.id.li_on);
-        li_off = findViewById(R.id.li_off);*/
+        // 저장된 설정값을 불러와 화면에 반영한다.
+        settingsRepository = new SettingsRepository(this);
+        AutomationSettings automationSettings = settingsRepository.loadAutomationSettings();
+        AlertSettings alertSettings = settingsRepository.loadAlertSettings();
+        heaterAutoMode = automationSettings.isHeaterAutoMode();
+        turbidityDashboardAlert = alertSettings.isDashboardAlertsEnabled();
+        turbidityNotificationAlert = alertSettings.isNotificationAlertsEnabled();
+        waterLevelDashboardAlert = alertSettings.isDashboardAlertsEnabled();
+        waterLevelNotificationAlert = alertSettings.isNotificationAlertsEnabled();
 
-        SharedPreferences sharedPreferences = getSharedPreferences(Shared, 0);
-        String value = sharedPreferences.getString("set", "");
-        tv_suon.setText(value);
+        tv_suon.setText(String.valueOf(automationSettings.getTargetTemperatureC()));
+        li_on.setText(automationSettings.getLightOnTime());
+        li_off.setText(automationSettings.getLightOffTime());
+        renderButtonStates();
 
-        //돌아가기
+        // 뒤로가기 버튼을 누르면 메인 대시보드로 돌아간다.
         btu_bac.setOnClickListener(v -> {
-            Intent reintent = new Intent(Setting.this, MainScreen.class);
-            /*intent.putExtra("he",he);
-            intent.putExtra("wq_t", wq_t);
-            intent.putExtra("wq_m", wq_m);
-            intent.putExtra("wl_t", wl_t);
-            intent.putExtra("wl_m", wl_m);
-            intent.putExtra("suon", (Parcelable) tv_suon);*/
-
-            startActivity(reintent);
+            startActivity(new Intent(Setting.this, MainScreen.class));
             finish();
         });
 
-        //적용하기
-        btu_sa.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), String.format("저장되었습니다."), Toast.LENGTH_SHORT).show();
+        // 저장 버튼을 누르면 입력값을 검증한 뒤 설정을 저장한다.
+        btu_sa.setOnClickListener(v -> saveSettings());
+
+        // 설정 토글 버튼을 누르면 각 설정의 활성화 상태를 바꾼다.
+        btu_heater.setOnClickListener(v -> {
+            heaterAutoMode = !heaterAutoMode;
+            renderButtonStates();
         });
-
-        try {
-            //히터
-            btu_heater.setOnClickListener(v -> {
-                if (he) {
-                    //(보내는 값)
-                    he = false;
-                    btu_heater.setBackgroundResource(R.drawable.bt_on);
-                    return;
-                }
-                he = true;
-                btu_heater.setBackgroundResource(R.drawable.bt_off);
-            });
-
-            //수질
-            //상단바 경고
-            btu_wq_t.setOnClickListener(v -> {
-                if (wq_t) {
-                    wq_t = false;
-                    btu_wq_t.setBackgroundResource(R.drawable.bt_on);
-                    return;
-
-                }
-                wq_t = true;
-                btu_wq_t.setBackgroundResource(R.drawable.bt_off);
-            });
-
-
-            //메인 경고
-            btu_wq_m.setOnClickListener(v -> {
-                if (wq_m) {
-                    wq_m = false;
-                    btu_wq_m.setBackgroundResource(R.drawable.bt_on);
-                    return;
-
-                }
-                if (!wq_m) {
-                    wq_m = true;
-                    btu_wq_m.setBackgroundResource(R.drawable.bt_off);
-                    return;
-                }
-            });
-
-            //수위
-            //상단 경고
-            btu_wl_t.setOnClickListener(v -> {
-                if (wl_t) {
-                    wl_t = false;
-                    btu_wl_t.setBackgroundResource(R.drawable.bt_on);
-                    return;
-
-                }
-                if (!wl_t) {
-                    wl_t = true;
-                    btu_wl_t.setBackgroundResource(R.drawable.bt_off);
-                    return;
-                }
-            });
-            //메인 경고
-            btu_wl_m.setOnClickListener(v -> {
-                if (wl_m) {
-                    wl_m = false;
-                    btu_wl_m.setBackgroundResource(R.drawable.bt_on);
-                    return;
-
-                }
-                if (!wl_m) {
-                    wl_m = true;
-                    btu_wl_m.setBackgroundResource(R.drawable.bt_off);
-                    return;
-                }
-            });
-
-        } finally {
-
-        }
-
-        //조명 (?)
-
-
+        btu_wq_m.setOnClickListener(v -> {
+            turbidityDashboardAlert = !turbidityDashboardAlert;
+            renderButtonStates();
+        });
+        btu_wq_t.setOnClickListener(v -> {
+            turbidityNotificationAlert = !turbidityNotificationAlert;
+            renderButtonStates();
+        });
+        btu_wl_m.setOnClickListener(v -> {
+            waterLevelDashboardAlert = !waterLevelDashboardAlert;
+            renderButtonStates();
+        });
+        btu_wl_t.setOnClickListener(v -> {
+            waterLevelNotificationAlert = !waterLevelNotificationAlert;
+            renderButtonStates();
+        });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void saveSettings() {
+        double targetTemperature = parseDouble(tv_suon.getText().toString(), -1);
+        if (!validator.isValidTargetTemperature(targetTemperature)) {
+            Toast.makeText(this, "목표 수온은 18~32°C 사이로 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String lightOn = normalizeTime(li_on.getText().toString(), "08:00");
+        String lightOff = normalizeTime(li_off.getText().toString(), "20:00");
+        if (!validator.isValidLightSchedule(lightOn, lightOff)) {
+            Toast.makeText(this, "조명 ON/OFF 시각은 HH:mm 형식이며 서로 달라야 합니다.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        SharedPreferences sharedPreferences = getSharedPreferences(Shared, 0);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        String value = tv_suon.getText().toString();
+        AutomationSettings automationSettings = new AutomationSettings(
+                heaterAutoMode,
+                targetTemperature,
+                targetTemperature - 1.0,
+                targetTemperature + 1.0,
+                true,
+                lightOn,
+                lightOff
+        );
+        AlertSettings alertSettings = new AlertSettings(
+                turbidityDashboardAlert || waterLevelDashboardAlert,
+                turbidityNotificationAlert || waterLevelNotificationAlert,
+                23.0,
+                29.0,
+                2.7,
+                500
+        );
+        settingsRepository.save(automationSettings, alertSettings);
+        AquariumRepository.getInstance().updateAlertSettings(alertSettings);
+        Toast.makeText(this, "설정이 저장되었습니다.", Toast.LENGTH_SHORT).show();
+    }
 
+    private void renderButtonStates() {
+        btu_heater.setBackgroundResource(heaterAutoMode ? R.drawable.bt_on : R.drawable.bt_off);
+        btu_wq_m.setBackgroundResource(turbidityDashboardAlert ? R.drawable.bt_on : R.drawable.bt_off);
+        btu_wq_t.setBackgroundResource(turbidityNotificationAlert ? R.drawable.bt_on : R.drawable.bt_off);
+        btu_wl_m.setBackgroundResource(waterLevelDashboardAlert ? R.drawable.bt_on : R.drawable.bt_off);
+        btu_wl_t.setBackgroundResource(waterLevelNotificationAlert ? R.drawable.bt_on : R.drawable.bt_off);
+    }
 
-        editor.putString("set", value);
-        editor.commit();
+    private double parseDouble(String value, double fallback) {
+        try {
+            return Double.parseDouble(value.trim());
+        } catch (NumberFormatException e) {
+            return fallback;
+        }
+    }
+
+    private String normalizeTime(String value, String fallback) {
+        String trimmed = value == null ? "" : value.trim();
+        return trimmed.matches("^([01]\\d|2[0-3]):[0-5]\\d$") ? trimmed : fallback;
     }
 }

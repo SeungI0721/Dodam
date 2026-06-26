@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 화면 전환 시 화면을 위로 이동시키는 애니메이션 리소스 파일이다. -->
 <set xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <translate

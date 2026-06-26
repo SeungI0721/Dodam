@@ -1,3 +1,4 @@
+<!-- 도담도담 앱 이름과 문자열 리소스를 정의하는 파일이다. -->
 <resources>
     <string name="app_name">Dodam</string>
 </resources>

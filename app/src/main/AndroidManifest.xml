@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dodam">
+<!-- 도담도담 앱의 Activity와 권한을 선언하는 Android Manifest 파일이다. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -10,9 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_app_dodam_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.NoActionBar"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".TestActivity"></activity>
+        android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".community_f" />
         <activity android:name=".community_q" />
         <activity android:name=".Commu_po" />
@@ -20,9 +19,14 @@
         <activity android:name=".Register" />
         <activity android:name=".Community" />
         <activity android:name=".Chatbot" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AquariumManageActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".Setting" />
         <activity android:name=".MainScreen" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

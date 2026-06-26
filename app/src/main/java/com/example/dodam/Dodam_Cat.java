@@ -1,3 +1,4 @@
+// 도담이 캐릭터 문구 화면과 챗봇 화면 이동을 담당하는 Activity 파일이다.
 package com.example.dodam;
 
 import androidx.appcompat.app.AppCompatActivity;

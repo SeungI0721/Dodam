@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 수조 등록, 수정, 삭제 화면을 구성하는 레이아웃 파일이다. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F4FBFA">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수조 관리"
+        android:textColor="#173D3A"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_aquarium_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="수조 이름"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_device_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="장치 ID"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btn_save_aquarium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="저장" />
+
+    <Button
+        android:id="@+id/btn_delete_aquarium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="삭제" />
+
+    <TextView
+        android:id="@+id/tv_aquarium_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="16dp"
+        android:textColor="#1F1F1F"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="돌아가기" />
+</LinearLayout>

@@ -1,3 +1,4 @@
+// 기존 WebView 기반 챗봇 화면을 표시하는 Activity 파일이다.
 package com.example.dodam;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,14 +28,13 @@ public class Chatbot extends AppCompatActivity {
 
             WebView webView = findViewById(R.id.webvw);
 
-            webView.setWebViewClient(new WebViewClient());  // URL 클릭 시, 새 창 열기 없이 웹뷰 내에서 다시 로드
+            webView.setWebViewClient(new WebViewClient());  // URL 클릭 시 새 창을 열지 않고 WebView 안에서 다시 로드한다.
             WebSettings webSettings = webView.getSettings();
-            webSettings.setAppCacheEnabled(true);
             webSettings.setCacheMode(webSettings.LOAD_CACHE_ELSE_NETWORK);
             webSettings.setJavaScriptEnabled(true);
             webSettings.setLoadWithOverviewMode(true);
             webSettings.setAllowFileAccess(true);
-            //if SDK version is greater of 19 then activate hardware acceleration otherwise activate software acceleration
+            // 현재 최소 SDK가 24이므로 하드웨어 가속을 사용한다.
             if (Build.VERSION.SDK_INT >= 19) {
                 webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
             } else if (Build.VERSION.SDK_INT >= 11 && Build.VERSION.SDK_INT < 19) {

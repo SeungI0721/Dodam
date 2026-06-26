@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 화면 전환 시 현재 위치를 유지하는 기본 애니메이션 리소스 파일이다. -->
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <translate
         android:duration="0"

@@ -1,3 +1,4 @@
+// 공지 게시판 글 목록을 Firebase Realtime Database에서 조회하는 Activity 파일이다.
 package com.example.dodam;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,7 @@ public class Community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        //이동 버튼
+        // 게시판 이동 버튼을 연결한다.
         btu_cback = findViewById(R.id.btu_cback);
         btu_f = findViewById(R.id.btu_f);
         btu_topo = findViewById(R.id.btu_topo);
@@ -48,30 +49,35 @@ public class Community extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        databaseReference = database.getReference("Post"); // DB 테이블 연결
+        databaseReference = database.getReference("Post"); // Firebase 게시글 경로를 연결한다.
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //파이어베이스 데이터 베이스 받음
-                arrayList.clear(); //기존 배열 리스트 초기화
+                // Firebase 게시글 목록을 받아온다.
+                arrayList.clear(); // 기존 게시글 목록을 초기화한다.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren() ) {
-                    Post post = snapshot.getValue(Post.class); //만든 Post.java에 맞춰 데이터 담기
-                    arrayList.add(post); //배열리스트에 넣고 리사이클러뷰로 쏘기
+                    Post post = snapshot.getValue(Post.class); // Firebase 데이터를 Post 모델로 변환한다.
+                    if (post != null) {
+                        post.setPostId(snapshot.getKey());
+                        if ("NOTICE".equals(post.getCategory())) {
+                            arrayList.add(post); // 공지 게시글만 화면 목록에 추가한다.
+                        }
+                    }
                 }
-                adapter.notifyDataSetChanged(); //리스트 저장 및 새로고침
+                adapter.notifyDataSetChanged(); // 게시글 목록을 새로고침한다.
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //DB 에러 발생시
-                Log.e("Community", String.valueOf(databaseError.toException())); //에러문 출력
+                // Firebase 조회 오류가 발생하면 로그로 남긴다.
+                Log.e("Community", String.valueOf(databaseError.toException()));
             }
         });
 
         adapter = new CustomAdapter(arrayList, this);
         recycler.setAdapter(adapter);
 
-        //돌아가기
+        // 뒤로가기 버튼을 누르면 메인 대시보드로 돌아간다.
         btu_cback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +87,7 @@ public class Community extends AppCompatActivity {
             }
         });
 
-        //Q&A
+        // Q&A 게시판 버튼을 누르면 Q&A 화면으로 이동한다.
         btu_q.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +97,7 @@ public class Community extends AppCompatActivity {
             }
         });
 
-        //자유게시판
+        // 자유게시판 버튼을 누르면 자유게시판 화면으로 이동한다.
         btu_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,11 +107,12 @@ public class Community extends AppCompatActivity {
             }
         });
 
-        //글쓰기
+        // 글쓰기 버튼을 누르면 공지 카테고리로 글쓰기 화면을 연다.
         btu_topo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Community.this, Commu_po.class);
+                intent.putExtra("category", "NOTICE");
                 startActivity(intent);
                 finish();
             }

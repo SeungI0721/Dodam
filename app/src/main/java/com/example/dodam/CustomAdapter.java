@@ -1,3 +1,4 @@
+// 커뮤니티 게시글 목록을 RecyclerView에 표시하는 Adapter 파일이다.
 package com.example.dodam;
 
 import android.annotation.SuppressLint;
@@ -7,12 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
 
@@ -37,7 +44,26 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         holder.tv_userName.setText(arrayList.get(position).getUserName());
         holder.tv_title.setText(arrayList.get(position).getNoticeTitle());
-        holder.tv_content.setText(arrayList.get(position).getNoticeContent());
+        Post post = arrayList.get(position);
+        String created = post.getCreatedAt() > 0
+                ? new SimpleDateFormat("MM/dd HH:mm", Locale.KOREA).format(new Date(post.getCreatedAt()))
+                : "";
+        holder.tv_content.setText("[" + safe(post.getCategory()) + "] " + created + "\n" + post.getNoticeContent());
+        holder.itemView.setOnLongClickListener(v -> {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user == null || post.getAuthorUid() == null || !user.getUid().equals(post.getAuthorUid())) {
+                return false;
+            }
+            new AlertDialog.Builder(context)
+                    .setMessage("게시글을 삭제하시겠습니까?")
+                    .setNegativeButton("취소", null)
+                    .setPositiveButton("삭제", (dialog, which) ->
+                            FirebaseDatabase.getInstance().getReference("Post")
+                                    .child(post.getPostId())
+                                    .removeValue())
+                    .show();
+            return true;
+        });
     }
 
     @Override
@@ -59,5 +85,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_content = itemView.findViewById(R.id.tv_content);
 
         }
+    }
+
+    private String safe(String value) {
+        return value == null || value.trim().isEmpty() ? "FREE" : value;
     }
 }

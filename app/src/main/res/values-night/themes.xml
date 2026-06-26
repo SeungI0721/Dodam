@@ -1,16 +1,17 @@
+<!-- 도담도담 앱의 야간 테마 색상과 상태바 색상을 정의하는 리소스 파일이다. -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- 앱 전체에 적용되는 야간 기본 테마이다. -->
     <style name="Theme.Dodam" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+        <!-- 야간 모드 주요 브랜드 색상을 지정한다. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
+        <!-- 야간 모드 보조 브랜드 색상을 지정한다. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        <!-- 상태바 색상을 주요 색상 변형값으로 맞춘다. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- 추가 테마 항목은 이 위치에 확장한다. -->
     </style>
 </resources>
