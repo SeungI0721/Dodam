@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+tools/jdk-17/
+tools/jdk-download/

@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 기존 WebView 챗봇 화면을 구성하는 레이아웃 파일이다. -->
+<!-- 기존 WebView 기반 챗봇 화면을 구성하는 레이아웃 파일이다. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chatbot">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dodam_background" />
-
-    <Button
-        android:id="@+id/back"
-        android:layout_width="134dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="650dp"
-        android:background="@drawable/bt_return"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/to_dodam"
-        android:layout_width="134dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="650dp"
-        android:background="@drawable/bt_to_dodam02"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="#F5F7FA"
+    android:fitsSystemWindows="true">
 
     <WebView
         android:id="@+id/webvw"
-        android:layout_width="408dp"
-        android:layout_height="650dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toTopOf="@id/chatbot_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </WebView>
+    <LinearLayout
+        android:id="@+id/chatbot_bottom_bar"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_return"
+            android:text="" />
+
+        <Button
+            android:id="@+id/to_dodam"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_to_dodam01"
+            android:text="" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

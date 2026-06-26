@@ -21,11 +21,20 @@ public class AquariumHistoryRepository {
     }
 
     public void addMaintenanceRecord(String aquariumId, String category, String memo) {
-        maintenanceRecords.add(0, new MaintenanceRecord(UUID.randomUUID().toString(), aquariumId,
-                System.currentTimeMillis(), category, memo));
+        MaintenanceRecord record = new MaintenanceRecord(UUID.randomUUID().toString(), aquariumId,
+                System.currentTimeMillis(), category, memo);
+        maintenanceRecords.add(0, record);
+        LocalMaintenanceStore store = LocalMaintenanceStore.getInstanceOrNull();
+        if (store != null) {
+            store.append(record);
+        }
     }
 
     public List<MaintenanceRecord> loadMaintenanceRecords() {
+        LocalMaintenanceStore store = LocalMaintenanceStore.getInstanceOrNull();
+        if (store != null) {
+            return store.load();
+        }
         return new ArrayList<>(maintenanceRecords);
     }
 }

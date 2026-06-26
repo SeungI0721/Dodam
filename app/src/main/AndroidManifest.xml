@@ -16,6 +16,7 @@
         <activity android:name=".community_q" />
         <activity android:name=".Commu_po" />
         <activity android:name=".Dodam_Cat" />
+        <activity android:name=".ui.assistant.AssistantActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Community" />
         <activity android:name=".Chatbot" />

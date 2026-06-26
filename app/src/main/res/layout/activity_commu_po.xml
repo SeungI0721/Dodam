@@ -1,119 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 커뮤니티 게시글 작성 화면을 구성하는 레이아웃 파일이다. -->
+<!-- 커뮤니티 게시글 작성 화면을 구성하는 반응형 레이아웃 파일이다. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Commu_po">
+    android:background="#F5F7FA"
+    android:fitsSystemWindows="true"
+    android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/post_write_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="게시글 작성"
+        android:textColor="#111111"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_ground" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/p패널"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/tv_main"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFFFF"
+        android:hint="제목을 입력하세요"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textColor="#111111"
+        android:textColorHint="#777777"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/posting_pannel" />
+        app:layout_constraintTop_toBottomOf="@id/post_write_title" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="385dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="140dp"
+    <EditText
+        android:id="@+id/tv_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="#FFFFFFFF"
+        android:gravity="top|start"
+        android:hint="내용을 입력하세요"
+        android:inputType="textMultiLine|textCapSentences"
+        android:minLines="8"
+        android:padding="14dp"
+        android:textColor="#111111"
+        android:textColorHint="#777777"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/post_write_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tv_main" />
 
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="376dp"
-            android:layout_height="85dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/tv_post_title" />
-
-        <EditText
-            android:id="@+id/tv_main"
-            android:layout_width="340dp"
-            android:layout_height="57dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:ems="10"
-            android:hint="제목을 입력하세요"
-            android:textColor="@color/black"
-            android:inputType="textPersonName"
-            android:textColorHint="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView12" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="391dp"
-        android:layout_height="600dp"
-        android:layout_marginBottom="50dp"
+    <LinearLayout
+        android:id="@+id/post_write_buttons"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="368dp"
-            android:layout_height="612dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/tv_content" />
+        <Button
+            android:id="@+id/btu_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_return"
+            android:text="" />
 
-        <EditText
-            android:id="@+id/tv_text"
-            android:layout_width="339dp"
-            android:layout_height="435dp"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:gravity="left"
-            android:hint="내용을 입력하세요"
-            android:textColor="@color/black"
-            android:inputType="textPersonName"
-            android:textColorHint="#000000"
-            app:layout_constraintEnd_toEndOf="@+id/imageView9"
-            app:layout_constraintStart_toStartOf="@+id/imageView9"
-            app:layout_constraintTop_toTopOf="@+id/imageView9" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/btu_back"
-        android:layout_width="140dp"
-        android:layout_height="110dp"
-        android:background="@drawable/bt_return"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btu_pos"
-        android:layout_width="140dp"
-        android:layout_height="110dp"
-        android:background="@drawable/bt_posting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        <Button
+            android:id="@+id/btu_pos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_posting"
+            android:text="" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

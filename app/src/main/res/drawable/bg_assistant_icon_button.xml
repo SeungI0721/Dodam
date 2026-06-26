@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 도담이 챗봇 상단 아이콘 버튼 배경을 정의하는 drawable 리소스 파일이다. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#F1F5F9" />
+    <corners android:radius="8dp" />
+</shape>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 도담이 챗봇 입력창 배경을 정의하는 drawable 리소스 파일이다. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#F8FAFC" />
+    <corners android:radius="8dp" />
+    <stroke
+        android:width="1dp"
+        android:color="#CBD5E1" />
+</shape>

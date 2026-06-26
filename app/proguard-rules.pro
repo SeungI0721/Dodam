@@ -1,21 +1,13 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# 도담도담 앱 릴리스 빌드에서 사용할 ProGuard 규칙 파일이다.
+# 현재 릴리스 빌드는 난독화를 사용하지 않지만, 추후 필요한 보존 규칙은 이 파일에 추가한다.
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# WebView에서 JavaScript 인터페이스를 공개할 경우 필요한 클래스 멤버 보존 규칙을 이 위치에 추가한다.
+# -keepclassmembers class 패키지명.클래스명 {
+#     public *;
+# }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# 오류 추적을 위해 라인 번호 정보를 보존해야 할 경우 아래 규칙을 사용할 수 있다.
+# -keepattributes SourceFile,LineNumberTable
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# 원본 소스 파일 이름을 숨겨야 할 경우 아래 규칙을 사용할 수 있다.
+# -renamesourcefileattribute SourceFile

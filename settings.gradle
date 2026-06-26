@@ -1,5 +1,6 @@
-// 도담도담 프로젝트의 Gradle 모듈과 저장소 설정 파일이다.
+// 도담도담 프로젝트의 Gradle 모듈과 저장소를 설정하는 파일이다.
 pluginManagement {
+    // Gradle 플러그인을 내려받을 저장소를 지정한다.
     repositories {
         google()
         mavenCentral()
@@ -9,6 +10,7 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // 앱 의존성을 내려받을 공식 저장소를 지정한다.
     repositories {
         google()
         mavenCentral()

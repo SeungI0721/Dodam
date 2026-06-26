@@ -1,43 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 사용자 프로필 수정 화면을 구성하는 레이아웃 파일이다. -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- 사용자 프로필 정보를 수정하는 화면 레이아웃 파일이다. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#F8F7FF">
+    android:background="#F5F7FA"
+    android:fitsSystemWindows="true">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="프로필 관리"
-        android:textColor="#30224A"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-    <EditText
-        android:id="@+id/et_profile_nickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="닉네임"
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="560dp"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="32dp">
 
-    <EditText
-        android:id="@+id/et_profile_photo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="프로필 이미지 이름"
-        android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="프로필 관리"
+                android:textColor="#111111"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btn_save_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="저장" />
+            <EditText
+                android:id="@+id/et_profile_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:autofillHints="name"
+                android:background="#FFFFFFFF"
+                android:hint="닉네임"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp" />
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="돌아가기" />
-</LinearLayout>
+            <EditText
+                android:id="@+id/et_profile_photo"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:background="#FFFFFFFF"
+                android:hint="프로필 이미지 이름"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp" />
+
+            <Button
+                android:id="@+id/btn_save_profile"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#4B7BEC"
+                android:text="저장"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:text="뒤로가기"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

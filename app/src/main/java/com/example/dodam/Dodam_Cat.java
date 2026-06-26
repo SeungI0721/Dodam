@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dodam.ui.assistant.AssistantActivity;
+
 import java.util.Random;
 
 public class Dodam_Cat extends AppCompatActivity {
@@ -62,7 +64,7 @@ public class Dodam_Cat extends AppCompatActivity {
         but_dodamt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reintent = new Intent(Dodam_Cat.this, Chatbot.class);
+                Intent reintent = new Intent(Dodam_Cat.this, AssistantActivity.class);
                 startActivity(reintent);
                 finish();
             }

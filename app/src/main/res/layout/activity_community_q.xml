@@ -1,95 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Q&A 게시판 목록 화면을 구성하는 레이아웃 파일이다. -->
+<!-- Q&A 게시판 목록 화면을 구성하는 반응형 레이아웃 파일이다. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".community_q">
+    android:background="#F5F7FA"
+    android:fitsSystemWindows="true"
+    android:padding="12dp">
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_ground" />
-
-        <ImageView
-            android:id="@+id/c패널"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/post_pannel" />
-
-    <Button
-        android:id="@+id/btu_f"
-        android:layout_width="117dp"
-        android:layout_height="99dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="18dp"
-        android:background="@drawable/bt_free01"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/공지"
-        android:layout_width="117dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bt_qna02" />
-
-    <Button
-        android:id="@+id/btu_go"
-        android:layout_width="117dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="75dp"
-        android:background="@drawable/bt_notice01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btu_topo"
-            android:layout_width="134dp"
-            android:layout_height="119dp"
-            android:background="@drawable/bt_post"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/btu_cback"
-            android:layout_width="134dp"
-            android:layout_height="119dp"
-            android:background="@drawable/bt_return"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="383dp"
-        android:layout_height="479dp"
-        android:layout_marginTop="180dp"
+    <LinearLayout
+        android:id="@+id/community_tabs"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="387dp"
-            android:layout_height="482dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btu_go"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_notice01"
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/tab_qna_selected"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:contentDescription="Q&amp;A"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bt_qna02" />
+
+        <Button
+            android:id="@+id/btu_f"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_free01"
+            android:text="" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/community_bottom_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/community_tabs" />
+
+    <LinearLayout
+        android:id="@+id/community_bottom_bar"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btu_cback"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_return"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btu_topo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_post"
+            android:text="" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
