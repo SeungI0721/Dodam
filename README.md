@@ -86,13 +86,6 @@ app/build/outputs/apk/debug/app-debug.apk
 
 lint 실행 중 Firebase/Google 라이브러리의 Kotlin metadata 버전 경고가 stderr에 출력될 수 있지만, Gradle 작업 결과는 `BUILD SUCCESSFUL`입니다.
 
-## Git 업로드 전 확인 사항
-
-- `app/google-services.json`은 Firebase 프로젝트 설정 파일입니다. 공개 저장소에 올릴 경우 Firebase 보안 규칙과 API 키 노출 범위를 반드시 확인해야 합니다.
-- `tools/jdk-17`은 로컬 빌드용 JDK이므로 `.gitignore` 대상입니다.
-- 실제 장치 연동 코드는 포함하지 않고, 앱 단독 데모 실행을 위해 `DemoDeviceGateway`를 사용합니다.
-- Android Studio에서 실행 전 Gradle JVM이 17인지 확인합니다.
-
 ## 문서
 
 상세 구현 기록은 `docs` 폴더에 정리되어 있습니다.
