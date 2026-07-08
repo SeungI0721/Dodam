@@ -1,6 +1,6 @@
 # 문서 목록
 
-이 폴더는 도담도담 Android 앱의 복구, 기능 구현, 챗봇 재구현, 검증 기록을 정리한 문서 모음입니다.
+이 폴더는 Dodam Android 앱의 복구, 기능 구현, 도우미 화면 재구축, 검증 기록을 정리한 문서 모음입니다.
 
 ## 읽는 순서
 
@@ -20,10 +20,10 @@
    - 실제 HW 없이 Android 앱 단독으로 구현한 SW 기능 범위를 확인합니다.
 
 6. `assistant-rebuild-plan.md`
-   - 기존 WebView 챗봇을 대체할 네이티브 도담이 챗봇 재구현 계획을 확인합니다.
+   - 기존 WebView 챗봇을 대체할 네이티브 도담이 도우미 화면 재구축 계획을 확인합니다.
 
 7. `assistant-final-implementation.md`
-   - Phase 0부터 Phase 7까지 구현된 챗봇 구조, 기능, 검증 결과를 확인합니다.
+   - Phase 0부터 Phase 7까지 구현된 도우미 구조, 기능, 검증 결과를 확인합니다.
 
 8. `final-verification-report.md`
    - 최종 빌드, 테스트, lint, 미검증 항목을 확인합니다.

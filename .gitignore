@@ -8,6 +8,10 @@ desktop.ini
 .vscode/
 *.iml
 
+# Local assistant/tool state
+.agents/
+.codex/
+
 # Local Android / Gradle settings
 local.properties
 .gradle/
@@ -63,5 +67,7 @@ node_modules/
 *.key
 *.pem
 *.p12
+*.jks
+*.keystore
 serviceAccountKey.json
 app/google-services.json
