@@ -31,9 +31,22 @@
 | minSdk | 24 |
 | Firebase BoM | 34.15.0 |
 
-프로젝트에는 `tools/jdk-17` 경로의 로컬 JDK 17을 우선 사용하도록 Gradle 설정이 들어 있습니다. Android Studio에서 열 때도 Gradle JVM을 17로 맞추면 됩니다.
+Android Studio에서 열 때 Gradle JVM을 17 이상으로 맞추면 됩니다. 개인 PC의 JDK 절대 경로는 저장소에 포함하지 않습니다.
 
 ## 프로젝트 구조
+
+```text
+Dodam/
+├─ README.md
+├─ app/                  Android 앱 모듈
+├─ docs/                 구현, 복구, 검증 기록 문서
+├─ gradle/wrapper/       Gradle Wrapper 실행 파일
+├─ build.gradle          루트 Gradle 빌드 설정
+├─ settings.gradle       Gradle 모듈 설정
+└─ gradle.properties     Gradle 실행 옵션
+```
+
+주요 Java 소스 구조는 다음과 같습니다.
 
 ```text
 app/src/main/java/com/example/dodam
@@ -54,6 +67,12 @@ app/src/main/java/com/example/dodam
 ```
 
 ## 빌드 방법
+
+Firebase Authentication과 Database SDK를 사용하므로 로컬 빌드 전 Firebase 설정 파일을 준비해야 합니다. 공개 저장소에는 실제 `app/google-services.json`을 올리지 않고, 형식 참고용 `app/google-services.example.json`만 포함합니다.
+
+1. Firebase Console에서 Android 앱 패키지 이름을 `com.example.dodam`으로 등록합니다.
+2. 내려받은 `google-services.json`을 `app/google-services.json` 위치에 둡니다.
+3. Android Studio의 Gradle JVM 또는 로컬 JDK를 17로 맞춥니다.
 
 Windows PowerShell 기준으로 다음 명령을 실행합니다.
 
@@ -78,9 +97,10 @@ app/build/outputs/apk/debug/app-debug.apk
 
 | 검증 항목 | 결과 |
 | --- | --- |
-| Debug APK 빌드 | 성공 |
-| 단위 테스트 | 성공 |
-| Lint | 성공 |
+| Debug APK 빌드 | 이전 검증 기록 기준 성공, 현재 환경 재검증 필요 |
+| 단위 테스트 | 현재 환경에서 `ClassNotFoundException` 확인 필요 |
+| Lint | 이전 검증 기록 기준 성공, 현재 환경 재검증 필요 |
+| 공개 저장소 기준 민감 설정 분리 | 실제 Firebase 설정 파일은 Git 추적 제외 |
 | Android Studio 실제 기기/에뮬레이터 실행 | 별도 실행 검증 필요 |
 | 실제 라즈베리파이/HW 연동 | 구현 범위 제외 |
 
@@ -97,3 +117,9 @@ lint 실행 중 Firebase/Google 라이브러리의 Kotlin metadata 버전 경고
 - `docs/phase0-audit.md`: 초기 감사 기록
 - `docs/phase1-build-recovery.md`: 빌드 복구 기록
 - `docs/phase2-to-phase7-implementation.md`: 단계별 구현 기록
+
+## GitHub 업로드 전 주의사항
+
+- `.idea/`, `.vscode/`, `.gradle/`, `build/`, `app/build/`는 로컬 또는 자동 생성 파일이므로 Git에 올리지 않습니다.
+- `app/google-services.json`, `.env`, 키 파일은 공개 저장소에 올리지 않습니다. 필요한 경우 예시 파일만 공유합니다.
+- 실제 Android 기기, 라즈베리파이, 센서 하드웨어 연동은 별도 환경에서 검증해야 합니다.

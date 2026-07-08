@@ -36,3 +36,4 @@
 - 실제 실행 가능한 상태와 아직 검증하지 못한 상태를 분리해서 기록합니다.
 - 실제 라즈베리파이 또는 센서 HW가 없는 기능은 Android 앱 단독 데모 기준으로 범위를 명확히 적습니다.
 - API key, 인증 토큰, 비밀번호 같은 민감 정보는 문서에 적지 않습니다.
+- 공개 저장소에는 실제 `app/google-services.json` 대신 `app/google-services.example.json`만 포함합니다.

@@ -1,17 +1,67 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# OS
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Local Android / Gradle settings
 local.properties
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local toolchains
 tools/jdk-17/
 tools/jdk-download/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# Java / Android build outputs
+*.class
+*.apk
+*.aab
+*.ap_
+
+# Native / embedded build outputs
+*.o
+*.so
+*.elf
+*.hex
+*.bin
+*.map
+*.eep
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Secrets and local service configuration
+.env
+.env.local
+.env.development
+.env.production
+*.key
+*.pem
+*.p12
+serviceAccountKey.json
+app/google-services.json
