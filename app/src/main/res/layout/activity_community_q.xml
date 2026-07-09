@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Q&A 게시판 목록 화면을 구성하는 반응형 레이아웃 파일이다. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fitsSystemWindows="true"
-    android:padding="12dp">
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_ground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/post_pannel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/community_tabs"
         android:layout_width="0dp"
-        android:layout_height="76dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,17 +44,13 @@
             android:id="@+id/btu_go"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:background="@drawable/bt_notice01"
             android:text="" />
 
         <ImageView
-            android:id="@+id/tab_qna_selected"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:contentDescription="Q&amp;A"
             android:scaleType="fitCenter"
@@ -42,7 +60,6 @@
             android:id="@+id/btu_f"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="6dp"
             android:layout_weight="1"
             android:background="@drawable/bt_free01"
             android:text="" />
@@ -52,10 +69,10 @@
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@id/community_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +81,7 @@
     <LinearLayout
         android:id="@+id/community_bottom_bar"
         android:layout_width="0dp"
-        android:layout_height="72dp"
+        android:layout_height="92dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,16 +92,19 @@
             android:id="@+id/btu_cback"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@drawable/bt_return"
             android:text="" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/btu_topo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="@drawable/bt_post"
             android:text="" />

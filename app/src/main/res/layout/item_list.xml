@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 커뮤니티 게시글 한 개를 표시하는 RecyclerView 아이템 레이아웃 파일이다. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,9 +30,10 @@
 
         <TextView
             android:id="@+id/tv_userName"
-            android:layout_width="96dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_weight="0.55"
             android:ellipsize="end"
             android:gravity="end"
             android:maxLines="1"
