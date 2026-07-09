@@ -41,7 +41,9 @@
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
 
             <EditText
                 android:id="@+id/et_profile_photo"
@@ -53,7 +55,9 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
 
             <Button
                 android:id="@+id/btn_save_profile"

@@ -97,14 +97,16 @@ app/build/outputs/apk/debug/app-debug.apk
 
 ## 검증 결과
 
-문서화된 최종 검증일은 **2026-06-26**입니다. 상세 내용은 `docs/final-verification-report.md`에 기록되어 있습니다.
+문서화된 최종 검증일은 **2026-06-26**이며, 이후 앱/DB 시나리오는 **2026-07-09**에 재확인했습니다. 상세 내용은 `docs/final-verification-report.md`, `docs/app-scenario-verification.md`, `docs/firebase-db-scenario-verification.md`에 기록되어 있습니다.
 
 | 검증 항목 | 결과 | 근거 |
 | --- | --- | --- |
 | Gradle clean | PASS | `.\gradlew.bat clean` 결과 `BUILD SUCCESSFUL` |
-| Debug APK build | PASS | `.\gradlew.bat :app:assembleDebug` 결과 Debug APK 생성 |
-| Unit tests | PASS | `.\gradlew.bat test` 통과 |
-| Lint | PASS | `.\gradlew.bat lint` 통과. Firebase/Google 라이브러리 Kotlin metadata 경고는 있었으나 Gradle 결과는 성공 |
+| Debug APK build | PASS | 2026-07-09 `.\gradlew.bat :app:assembleDebug` 결과 `BUILD SUCCESSFUL` |
+| Unit tests | FAIL | 2026-07-09 `.\gradlew.bat :app:testDebugUnitTest`에서 테스트 클래스 `ClassNotFoundException` 발생 |
+| Lint | PASS | 2026-07-09 `.\gradlew.bat :app:lintDebug` 통과. Firebase/Google 라이브러리 Kotlin metadata 경고는 있었으나 Gradle 결과는 성공 |
+| Firebase public DB read | PASS | 2026-07-09 `UserIds`, `Post` REST 공개 읽기 `200 OK` 확인 |
+| Firebase Auth signup | FAIL | 2026-07-09 REST 임시 회원가입 요청이 `CONFIGURATION_NOT_FOUND` 반환. Firebase Authentication 설정 필요 |
 | Real Android device execution | NOT VERIFIED | 연결된 실제 Android 기기/에뮬레이터에서 전체 화면 조작 미검증 |
 | Real Firebase account scenario | NOT VERIFIED | 실제 Firebase 계정으로 로그인, 회원가입, 데이터 쓰기/읽기 시나리오 미검증 |
 | Raspberry Pi / Arduino / sensor integration | NOT VERIFIED | 실제 Raspberry Pi, Arduino, 센서 연동 환경 없음 |
@@ -126,6 +128,9 @@ app/build/outputs/apk/debug/app-debug.apk
 - `docs/assistant-rebuild-plan.md`: 도우미 재구축 계획
 - `docs/assistant-final-implementation.md`: 도우미 최종 구현 문서
 - `docs/final-verification-report.md`: 최종 검증 기록
+- `docs/app-scenario-verification.md`: 앱 전체 동작 시나리오 검증 기록
+- `docs/firebase-db-scenario-verification.md`: Firebase DB 경로별 시나리오 검증 기록
+- `docs/firebase-realtime-database-rules.md`: Firebase Realtime Database Rules 예시
 - `docs/phase0-audit.md`: 초기 감사 기록
 - `docs/phase1-build-recovery.md`: 빌드 복구 기록
 - `docs/phase2-to-phase7-implementation.md`: 단계별 구현 기록

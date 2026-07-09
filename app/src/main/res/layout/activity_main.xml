@@ -38,15 +38,15 @@
                 android:src="@drawable/app_icon" />
 
             <EditText
-                android:id="@+id/et_id"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="28dp"
-                android:autofillHints="username"
+                android:autofillHints="emailAddress"
                 android:background="#EFFFFFFF"
-                android:hint="아이디"
+                android:hint="이메일"
                 android:imeOptions="actionNext"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"

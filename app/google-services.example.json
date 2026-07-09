@@ -2,6 +2,7 @@
   "project_info": {
     "project_number": "000000000000",
     "project_id": "your-firebase-project-id",
+    "firebase_url": "https://your-firebase-project-id-default-rtdb.firebaseio.com",
     "storage_bucket": "your-firebase-project-id.firebasestorage.app"
   },
   "client": [

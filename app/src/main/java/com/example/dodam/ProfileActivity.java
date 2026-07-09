@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.dodam.data.firebase.DodamFirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,7 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
             profile.put("email", user.getEmail());
             profile.put("nickname", displayName);
             profile.put("photoName", photo.isEmpty() ? "p_rofile1" : photo);
-            FirebaseDatabase.getInstance().getReference("users")
+            DodamFirebaseDatabase.getInstance().getReference("Users")
                     .child(user.getUid())
                     .child("profile")
                     .setValue(profile);

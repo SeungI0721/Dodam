@@ -39,7 +39,9 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
 
             <EditText
                 android:id="@+id/et_device_id"
@@ -51,7 +53,9 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
 
             <LinearLayout
                 android:layout_width="match_parent"

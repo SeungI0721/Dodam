@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.dodam.data.firebase.DodamFirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +46,7 @@ public class community_f extends AppCompatActivity {
         recycler.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
 
-        database = FirebaseDatabase.getInstance();
+        database = DodamFirebaseDatabase.getInstance();
 
         databaseReference = database.getReference("Post"); // Firebase 게시글 경로를 연결한다.
         databaseReference.addValueEventListener(new ValueEventListener() {

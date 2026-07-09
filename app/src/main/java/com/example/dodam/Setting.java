@@ -59,10 +59,10 @@ public class Setting extends AppCompatActivity {
         AutomationSettings automationSettings = settingsRepository.loadAutomationSettings();
         AlertSettings alertSettings = settingsRepository.loadAlertSettings();
         heaterAutoMode = automationSettings.isHeaterAutoMode();
-        turbidityDashboardAlert = alertSettings.isDashboardAlertsEnabled();
-        turbidityNotificationAlert = alertSettings.isNotificationAlertsEnabled();
-        waterLevelDashboardAlert = alertSettings.isDashboardAlertsEnabled();
-        waterLevelNotificationAlert = alertSettings.isNotificationAlertsEnabled();
+        turbidityDashboardAlert = alertSettings.isTurbidityDashboardAlertEnabled();
+        turbidityNotificationAlert = alertSettings.isTurbidityNotificationAlertEnabled();
+        waterLevelDashboardAlert = alertSettings.isWaterLevelDashboardAlertEnabled();
+        waterLevelNotificationAlert = alertSettings.isWaterLevelNotificationAlertEnabled();
 
         tv_suon.setText(String.valueOf(automationSettings.getTargetTemperatureC()));
         li_on.setText(automationSettings.getLightOnTime());
@@ -124,8 +124,10 @@ public class Setting extends AppCompatActivity {
                 lightOff
         );
         AlertSettings alertSettings = new AlertSettings(
-                turbidityDashboardAlert || waterLevelDashboardAlert,
-                turbidityNotificationAlert || waterLevelNotificationAlert,
+                turbidityDashboardAlert,
+                turbidityNotificationAlert,
+                waterLevelDashboardAlert,
+                waterLevelNotificationAlert,
                 23.0,
                 29.0,
                 2.7,

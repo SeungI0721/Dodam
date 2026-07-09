@@ -32,9 +32,13 @@ public class SettingsRepository {
 
     public AlertSettings loadAlertSettings() {
         String prefix = prefix();
+        boolean dashboardAlerts = preferences.getBoolean(prefix + "dashboard_alerts", true);
+        boolean notificationAlerts = preferences.getBoolean(prefix + "notification_alerts", true);
         return new AlertSettings(
-                preferences.getBoolean(prefix + "dashboard_alerts", true),
-                preferences.getBoolean(prefix + "notification_alerts", true),
+                preferences.getBoolean(prefix + "turbidity_dashboard_alerts", dashboardAlerts),
+                preferences.getBoolean(prefix + "turbidity_notification_alerts", notificationAlerts),
+                preferences.getBoolean(prefix + "water_level_dashboard_alerts", dashboardAlerts),
+                preferences.getBoolean(prefix + "water_level_notification_alerts", notificationAlerts),
                 Double.longBitsToDouble(preferences.getLong(prefix + "low_temp", Double.doubleToLongBits(23.0))),
                 Double.longBitsToDouble(preferences.getLong(prefix + "high_temp", Double.doubleToLongBits(29.0))),
                 Double.longBitsToDouble(preferences.getLong(prefix + "turbidity_warning", Double.doubleToLongBits(2.7))),
@@ -54,6 +58,10 @@ public class SettingsRepository {
                 .putString(prefix + "light_off", automationSettings.getLightOffTime())
                 .putBoolean(prefix + "dashboard_alerts", alertSettings.isDashboardAlertsEnabled())
                 .putBoolean(prefix + "notification_alerts", alertSettings.isNotificationAlertsEnabled())
+                .putBoolean(prefix + "turbidity_dashboard_alerts", alertSettings.isTurbidityDashboardAlertEnabled())
+                .putBoolean(prefix + "turbidity_notification_alerts", alertSettings.isTurbidityNotificationAlertEnabled())
+                .putBoolean(prefix + "water_level_dashboard_alerts", alertSettings.isWaterLevelDashboardAlertEnabled())
+                .putBoolean(prefix + "water_level_notification_alerts", alertSettings.isWaterLevelNotificationAlertEnabled())
                 .putLong(prefix + "low_temp", Double.doubleToLongBits(alertSettings.getLowTemperatureC()))
                 .putLong(prefix + "high_temp", Double.doubleToLongBits(alertSettings.getHighTemperatureC()))
                 .putLong(prefix + "turbidity_warning", Double.doubleToLongBits(alertSettings.getTurbidityWarning()))

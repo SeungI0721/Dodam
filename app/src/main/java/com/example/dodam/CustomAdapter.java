@@ -12,9 +12,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dodam.data.firebase.DodamFirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                     .setMessage("게시글을 삭제하시겠습니까?")
                     .setNegativeButton("취소", null)
                     .setPositiveButton("삭제", (dialog, which) ->
-                            FirebaseDatabase.getInstance().getReference("Post")
+                            DodamFirebaseDatabase.getInstance().getReference("Post")
                                     .child(post.getPostId())
                                     .removeValue())
                     .show();

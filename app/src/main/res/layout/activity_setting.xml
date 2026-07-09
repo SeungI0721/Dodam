@@ -105,7 +105,7 @@
                     android:layout_height="52dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
-                    android:text="조명 수동" />
+                    android:text="수위 수동" />
 
                 <Button
                     android:id="@+id/btu_wl_t"
@@ -113,7 +113,7 @@
                     android:layout_height="52dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
-                    android:text="조명 자동" />
+                    android:text="수위 자동" />
             </LinearLayout>
 
             <TextView
@@ -142,7 +142,9 @@
                     android:inputType="time"
                     android:maxLines="1"
                     android:paddingStart="14dp"
-                    android:paddingEnd="14dp" />
+                    android:paddingEnd="14dp"
+                    android:textColor="#111111"
+                    android:textColorHint="#777777" />
 
                 <EditText
                     android:id="@+id/li_off"
@@ -155,7 +157,9 @@
                     android:inputType="time"
                     android:maxLines="1"
                     android:paddingStart="14dp"
-                    android:paddingEnd="14dp" />
+                    android:paddingEnd="14dp"
+                    android:textColor="#111111"
+                    android:textColorHint="#777777" />
             </LinearLayout>
 
             <Button

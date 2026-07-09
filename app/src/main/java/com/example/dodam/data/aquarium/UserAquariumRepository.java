@@ -4,10 +4,10 @@ package com.example.dodam.data.aquarium;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.dodam.data.firebase.DodamFirebaseDatabase;
 import com.example.dodam.domain.model.Aquarium;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,7 @@ public class UserAquariumRepository {
         persist(kept);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            FirebaseDatabase.getInstance().getReference("users")
+            DodamFirebaseDatabase.getInstance().getReference("Users")
                     .child(user.getUid())
                     .child("aquariums")
                     .child(aquariumId)
@@ -111,7 +111,7 @@ public class UserAquariumRepository {
         if (user == null) {
             return;
         }
-        FirebaseDatabase.getInstance().getReference("users")
+        DodamFirebaseDatabase.getInstance().getReference("Users")
                 .child(user.getUid())
                 .child("aquariums")
                 .child(aquarium.getAquariumId())

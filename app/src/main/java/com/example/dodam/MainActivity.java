@@ -5,17 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_login, btn_register;
-    private EditText et_id, et_pass;
+    private EditText et_email, et_pass;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // 로그인 화면의 입력칸과 버튼을 연결한다.
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
-        et_id = findViewById(R.id.et_id);
+        et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
 
         // 로그인 버튼을 누르면 이메일 기반 로그인을 실행한다.
@@ -46,15 +48,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void login() {
-        String email = et_id.getText().toString().trim();
+        String email = et_email.getText().toString().trim();
         String password = et_pass.getText().toString();
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!email.contains("@")) {
-            Toast.makeText(this, "아이디 대신 이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     openDashboard();
                 })
                 .addOnFailureListener(error ->
-                        Toast.makeText(this, "로그인 실패: " + error.getMessage(), Toast.LENGTH_SHORT).show())
+                        Toast.makeText(this, getLoginErrorMessage(error), Toast.LENGTH_LONG).show())
                 .addOnCompleteListener(task -> btn_login.setEnabled(true));
     }
 
@@ -73,5 +75,28 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainScreen.class);
         startActivity(intent);
         finish();
+    }
+
+    private boolean isValidEmail(String email) {
+        return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private String getLoginErrorMessage(Exception error) {
+        if (error instanceof FirebaseAuthException) {
+            String code = ((FirebaseAuthException) error).getErrorCode();
+            if ("ERROR_CONFIGURATION_NOT_FOUND".equals(code)) {
+                return "로그인 실패: Firebase Authentication 설정을 확인해주세요.";
+            }
+            if ("ERROR_INVALID_EMAIL".equals(code)) {
+                return "로그인 실패: 이메일 형식이 올바르지 않습니다.";
+            }
+            if ("ERROR_INVALID_CREDENTIAL".equals(code) || "ERROR_WRONG_PASSWORD".equals(code)) {
+                return "로그인 실패: 이메일 또는 비밀번호를 확인해주세요.";
+            }
+            if ("ERROR_USER_NOT_FOUND".equals(code)) {
+                return "로그인 실패: 가입되지 않은 이메일입니다.";
+            }
+        }
+        return "로그인 실패: " + error.getMessage();
     }
 }

@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dodam.data.firebase.DodamFirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,11 +20,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Commu_po extends AppCompatActivity {
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseDatabase database = DodamFirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
 
     private Button btu_back, btu_pos;
-    private TextView tv_main, tv_text;
+    private EditText tv_main, tv_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +59,11 @@ public class Commu_po extends AppCompatActivity {
                 }
                 String userName = user != null && user.getDisplayName() != null ? user.getDisplayName() : "도담 사용자";
                 String authorUid = user.getUid();
-                String category = getIntent().getStringExtra("category");
-                if (category == null || category.trim().isEmpty()) {
-                    category = "FREE";
+                String selectedCategory = getIntent().getStringExtra("category");
+                if (selectedCategory == null || selectedCategory.trim().isEmpty()) {
+                    selectedCategory = "FREE";
                 }
+                final String category = selectedCategory;
                 String title = tv_main.getText().toString().trim();
                 String content = tv_text.getText().toString().trim();
 
@@ -80,7 +82,7 @@ public class Commu_po extends AppCompatActivity {
                 databaseReference.child("Post").child(key).setValue(post)
                         .addOnSuccessListener(unused -> {
                             Toast.makeText(getApplicationContext(), "게시글이 저장되었습니다.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Commu_po.this, Community.class));
+                            startActivity(new Intent(Commu_po.this, getCommunityListClass(category)));
                             finish();
                         })
                         .addOnFailureListener(error ->
@@ -88,6 +90,16 @@ public class Commu_po extends AppCompatActivity {
 
             }
         });
+    }
+
+    private Class<?> getCommunityListClass(String category) {
+        if ("NOTICE".equals(category)) {
+            return Community.class;
+        }
+        if ("QNA".equals(category)) {
+            return community_q.class;
+        }
+        return community_f.class;
     }
 
 }

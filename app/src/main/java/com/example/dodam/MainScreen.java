@@ -69,7 +69,7 @@ public class MainScreen extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String displayName = user != null && user.getDisplayName() != null ? user.getDisplayName() : getIntent().getStringExtra("userName");
         tv_name.setText(displayName == null || displayName.trim().isEmpty() ? "도담 사용자" : displayName);
-        tv_point.setText("0");
+        tv_point.setText("포인트 0점");
         member_photo.setImageResource(R.drawable.p_rofile1);
         member_photo.setOnClickListener(v -> startActivity(new Intent(MainScreen.this, ProfileActivity.class)));
         member_photo.setOnLongClickListener(v -> {
@@ -105,8 +105,9 @@ public class MainScreen extends AppCompatActivity {
 
     private void renderState(DashboardUiState state) {
         tv_team.setText(state.getTemperatureText());
-        tv_point.setText(statusLabel(state));
-        tv_dashboard_detail.setText("탁도 " + state.getTurbidityText()
+        tv_point.setText("포인트 0점");
+        tv_dashboard_detail.setText("상태 " + statusLabel(state)
+                + "\n탁도 " + state.getTurbidityText()
                 + " / 수위 " + state.getWaterLevelText()
                 + "\n연결 " + state.getConnectionState().name()
                 + " / 업데이트 " + state.getLastUpdatedText()

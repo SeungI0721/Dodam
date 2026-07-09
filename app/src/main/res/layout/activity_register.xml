@@ -49,53 +49,16 @@
                     android:inputType="text"
                     android:maxLines="1"
                     android:paddingStart="14dp"
-                    android:paddingEnd="14dp" />
+                    android:paddingEnd="14dp"
+                    android:textColor="#111111"
+                    android:textColorHint="#777777" />
 
                 <Button
                     android:id="@+id/btn_check"
-                    android:layout_width="96dp"
+                    android:layout_width="112dp"
                     android:layout_height="52dp"
                     android:text="중복확인" />
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/et_pass"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="12dp"
-                android:autofillHints="password"
-                android:background="#FFFFFFFF"
-                android:hint="비밀번호"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
-
-            <EditText
-                android:id="@+id/et_pass2"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="12dp"
-                android:autofillHints="password"
-                android:background="#FFFFFFFF"
-                android:hint="비밀번호 확인"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
-
-            <EditText
-                android:id="@+id/et_name"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="12dp"
-                android:autofillHints="name"
-                android:background="#FFFFFFFF"
-                android:hint="이름"
-                android:inputType="textPersonName"
-                android:maxLines="1"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
 
             <EditText
                 android:id="@+id/et_mail"
@@ -108,7 +71,54 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingStart="14dp"
-                android:paddingEnd="14dp" />
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
+
+            <EditText
+                android:id="@+id/et_pass"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="password"
+                android:background="#FFFFFFFF"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
+
+            <EditText
+                android:id="@+id/et_pass2"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="password"
+                android:background="#FFFFFFFF"
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="username"
+                android:background="#FFFFFFFF"
+                android:hint="닉네임"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="#111111"
+                android:textColorHint="#777777" />
 
             <CheckBox
                 android:id="@+id/cb_check"

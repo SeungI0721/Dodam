@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "UserIds": {
+      "$userId": {
+        ".read": true,
+        ".write": "auth != null && newData.val() == auth.uid && (!data.exists() || data.val() == auth.uid)"
+      }
+    },
+    "Users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid"
+      }
+    },
+    "Post": {
+      ".read": true,
+      "$postId": {
+        ".write": "auth != null && ((!data.exists() && newData.child('authorUid').val() == auth.uid) || (data.exists() && data.child('authorUid').val() == auth.uid))"
+      }
+    }
+  }
+}

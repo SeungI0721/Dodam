@@ -31,6 +31,15 @@
 9. `renamed-items.md`
    - 코드 구조 개선 중 변경된 이름과 기존 이름을 확인합니다.
 
+10. `firebase-realtime-database-rules.md`
+   - 회원가입 아이디 중복 확인과 사용자/게시글 저장에 필요한 Realtime Database Rules 예시를 확인합니다.
+
+11. `firebase-db-scenario-verification.md`
+   - Firebase DB 경로별 시나리오와 현재 원격 검증 상태를 확인합니다.
+
+12. `app-scenario-verification.md`
+   - 로그인, 회원가입, 대시보드, 설정, 수조, 커뮤니티, 도우미 등 앱 전체 동작 시나리오 검증 결과를 확인합니다.
+
 ## 문서 작성 기준
 
 - 실제 실행 가능한 상태와 아직 검증하지 못한 상태를 분리해서 기록합니다.
